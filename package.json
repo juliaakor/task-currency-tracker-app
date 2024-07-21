@@ -14,7 +14,9 @@
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "clean": "rm -r ./build",
-    "clean:npm": "rm -r node_modules"
+    "clean:npm": "rm -r node_modules",
+    "prettier": "prettier src --check --ignore-path .gitignore .",
+    "prettier:fix": "prettier src --write --ignore-path .gitignore ."
   },
   "keywords": [],
   "author": "",
@@ -38,6 +40,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.0",
+    "prettier": "^3.3.3",
     "style-loader": "^4.0.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5.5.3",
