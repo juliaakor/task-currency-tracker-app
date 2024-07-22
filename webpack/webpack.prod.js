@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { merge } = require('webpack-merge');
 
 const commonConfig = require('./webpack.config');
+const { ROOT_PATH } = require('./webpack.constants');
 
 module.exports = merge(commonConfig, {
   devtool: 'source-map',
@@ -38,7 +39,7 @@ module.exports = merge(commonConfig, {
       favicon: './public/favicon.ico',
       hash: true,
       minify: true,
-      template: path.join(__dirname, 'public', 'index.html'),
+      template: path.join(ROOT_PATH, 'public', 'index.html'),
     }),
     new MiniCssExtractPlugin({
       chunkFilename: '[id].[contenthash].css',

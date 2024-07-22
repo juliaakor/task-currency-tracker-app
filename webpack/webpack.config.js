@@ -4,6 +4,8 @@ const { EsbuildPlugin } = require('esbuild-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
+const { ROOT_PATH } = require('./webpack.constants');
+
 module.exports = {
   devServer: {
     compress: true,
@@ -14,7 +16,7 @@ module.exports = {
     port: 3000,
   },
   entry: {
-    index: path.join(__dirname, 'src', 'index.tsx'),
+    index: path.join(ROOT_PATH, 'src', 'index.tsx'),
   },
   module: {
     rules: [
@@ -56,7 +58,7 @@ module.exports = {
   },
   output: {
     clean: true,
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(ROOT_PATH, 'build'),
     publicPath: '/',
   },
   performance: {
@@ -66,6 +68,6 @@ module.exports = {
   plugins: [new MiniCssExtractPlugin()],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
+    plugins: [new TsconfigPathsPlugin({ configFile: 'tsconfig.json' })],
   },
 };

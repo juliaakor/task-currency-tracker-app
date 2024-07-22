@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { merge } = require('webpack-merge');
 
 const commonConfig = require('./webpack.config');
+const { ROOT_PATH } = require('./webpack.constants');
 
 module.exports = merge(commonConfig, {
   devtool: 'inline-source-map',
@@ -34,7 +35,7 @@ module.exports = merge(commonConfig, {
   plugins: [
     new HtmlWebpackPlugin({
       showErrors: true,
-      template: path.join(__dirname, 'public', 'index.html'),
+      template: path.join(ROOT_PATH, 'public', 'index.html'),
     }),
     new MiniCssExtractPlugin({
       chunkFilename: '[id].css',
