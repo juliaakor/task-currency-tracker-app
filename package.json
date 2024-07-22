@@ -18,7 +18,8 @@
     "lint": "npx eslint --max-warnings=0 --ignore-path .gitignore .",
     "lint:fix": "npx eslint --ignore-path .gitignore . --fix",
     "prettier": "prettier src --check --ignore-path .gitignore .",
-    "prettier:fix": "prettier src --write --ignore-path .gitignore ."
+    "prettier:fix": "prettier src --write --ignore-path .gitignore .",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -53,6 +54,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.0",
+    "husky": "^9.1.1",
     "mini-css-extract-plugin": "^2.9.0",
     "prettier": "^3.3.3",
     "style-loader": "^4.0.0",
