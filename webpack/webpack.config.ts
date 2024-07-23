@@ -1,20 +1,16 @@
-const path = require('path');
+import path from 'path';
 
-const { EsbuildPlugin } = require('esbuild-loader');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+import { EsbuildPlugin } from 'esbuild-loader';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import { Configuration } from 'webpack';
 
-module.exports = {
-  devServer: {
-    compress: true,
-    historyApiFallback: true,
-    host: 'localhost',
-    hot: true,
-    open: true,
-    port: 3000,
-  },
+const ROOT_PATH = path.resolve(__dirname, '../');
+
+export default {
   entry: {
-    index: path.join(__dirname, 'src', 'index.tsx'),
+    index: path.join(ROOT_PATH, 'src', 'index.tsx'),
   },
   module: {
     rules: [
@@ -56,16 +52,28 @@ module.exports = {
   },
   output: {
     clean: true,
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(ROOT_PATH, 'build'),
     publicPath: '/',
   },
   performance: {
     maxAssetSize: 1024 ** 2,
     maxEntrypointSize: Infinity,
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      cache: true,
+      favicon: './public/favicon.ico',
+      hash: true,
+      minify: true,
+      template: path.join(ROOT_PATH, 'public', 'index.html'),
+    }),
+    new MiniCssExtractPlugin({
+      chunkFilename: '[id].[contenthash].css',
+      filename: 'css/[name].[contenthash].css',
+    }),
+  ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
+    plugins: [new TsconfigPathsPlugin({ configFile: 'tsconfig.json' })],
   },
-};
+} as Configuration;
