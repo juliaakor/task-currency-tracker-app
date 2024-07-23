@@ -22,7 +22,9 @@
     "noImplicitAny": true,
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@pages/*": ["./src/pages/*"]
     }
   },
   "include": ["src/**/*", "**/*.ts", "**/*.tsx"],
