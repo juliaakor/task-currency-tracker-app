@@ -1,14 +1,18 @@
-import path from 'path';
-
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration } from 'webpack';
+import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import { merge } from 'webpack-merge';
 
 import commonConfig from './webpack.config';
-import { ROOT_PATH } from './webpack.constants';
 
 export default merge(commonConfig, {
+  devServer: {
+    compress: true,
+    historyApiFallback: true,
+    host: 'localhost',
+    hot: true,
+    open: true,
+    port: 3000,
+  } as WebpackDevServerConfiguration,
   devtool: 'inline-source-map',
   mode: 'development',
   module: {
@@ -33,14 +37,5 @@ export default merge(commonConfig, {
     chunkFilename: 'js/[name].bundle.js',
     filename: 'js/[name].bundle.js',
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      showErrors: true,
-      template: path.join(ROOT_PATH, 'public', 'index.html'),
-    }),
-    new MiniCssExtractPlugin({
-      chunkFilename: '[id].css',
-      filename: 'css/[name].css',
-    }),
-  ],
+  plugins: [],
 }) as Configuration;
