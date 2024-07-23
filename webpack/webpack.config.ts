@@ -1,12 +1,13 @@
-const path = require('path');
+import path from 'path';
 
-const { EsbuildPlugin } = require('esbuild-loader');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+import { EsbuildPlugin } from 'esbuild-loader';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import { Configuration } from 'webpack';
 
-const { ROOT_PATH } = require('./webpack.constants');
+import { ROOT_PATH } from './webpack.constants';
 
-module.exports = {
+export default {
   devServer: {
     compress: true,
     historyApiFallback: true,
@@ -70,4 +71,4 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     plugins: [new TsconfigPathsPlugin({ configFile: 'tsconfig.json' })],
   },
-};
+} as Configuration;

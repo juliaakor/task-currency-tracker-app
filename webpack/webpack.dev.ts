@@ -1,13 +1,14 @@
-const path = require('path');
+import path from 'path';
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { merge } = require('webpack-merge');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { Configuration } from 'webpack';
+import { merge } from 'webpack-merge';
 
-const commonConfig = require('./webpack.config');
-const { ROOT_PATH } = require('./webpack.constants');
+import commonConfig from './webpack.config';
+import { ROOT_PATH } from './webpack.constants';
 
-module.exports = merge(commonConfig, {
+export default merge(commonConfig, {
   devtool: 'inline-source-map',
   mode: 'development',
   module: {
@@ -42,4 +43,4 @@ module.exports = merge(commonConfig, {
       filename: 'css/[name].css',
     }),
   ],
-});
+}) as Configuration;
