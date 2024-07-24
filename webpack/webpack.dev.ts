@@ -28,7 +28,12 @@ export default merge(commonConfig, {
               modules: true,
             },
           },
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
     ],
