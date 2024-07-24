@@ -10,7 +10,8 @@
     },
     "import/resolver": {
       "typescript": true,
-      "node": true
+      "node": true,
+      "sass": true
     }
   },
   "plugins": ["react", "react-hooks", "perfectionist", "import", "@typescript-eslint", "prettier"],
@@ -89,6 +90,7 @@
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/extensions": 0,
-    "react/function-component-definition": 0
+    "react/function-component-definition": 0,
+    "react/jsx-props-no-spreading": 0
   }
 }

@@ -18,7 +18,7 @@ export default merge(commonConfig, {
   module: {
     rules: [
       {
-        test: /\.css$/i,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           'style-loader',
           {
@@ -28,6 +28,7 @@ export default merge(commonConfig, {
               modules: true,
             },
           },
+          'sass-loader',
         ],
       },
     ],
