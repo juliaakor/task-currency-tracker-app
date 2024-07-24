@@ -13,7 +13,7 @@ export default merge(commonConfig, {
   module: {
     rules: [
       {
-        test: /\.css$/i,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -23,6 +23,7 @@ export default merge(commonConfig, {
               modules: true,
             },
           },
+          'sass-loader',
         ],
       },
     ],

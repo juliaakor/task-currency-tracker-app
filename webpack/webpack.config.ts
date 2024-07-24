@@ -73,7 +73,7 @@ export default {
     }),
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
     plugins: [new TsconfigPathsPlugin({ configFile: 'tsconfig.json' })],
   },
 } as Configuration;
