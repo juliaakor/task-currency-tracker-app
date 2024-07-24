@@ -24,7 +24,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@constants/*": ["./src/constants/*"],
-      "@pages/*": ["./src/pages/*"]
+      "@pages/*": ["./src/pages/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "include": ["src/**/*", "**/*.ts", "**/*.tsx"],
