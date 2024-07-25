@@ -1,2 +1,2 @@
-export * from './Icons';
 export { Loader } from './Loader';
+export { Navigation } from './Navigation';
