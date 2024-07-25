@@ -1,0 +1,9 @@
+@import '@constants/scss/index.scss';
+
+.navItem {
+  font-size: $c-font-size-small;
+  font-weight: $c-font-weight-thin;
+  line-height: $c-line-height-x-medium;
+  color: $primary-text-color;
+  text-decoration: none;
+}

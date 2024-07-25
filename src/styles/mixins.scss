@@ -1,0 +1,35 @@
+@mixin signature-linear-colors-text {
+  background: linear-gradient(
+    90.18deg,
+    $logo-gradient-start-rgb 0.18%,
+    $logo-gradient-middle-rgb 49.3%,
+    $logo-gradient-end-rgb 99.88%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin flex($direction: row, $justify-content: false, $align-items: false, $gap: false, $wrap: false) {
+  display: flex;
+  @if $direction != row {
+    flex-direction: $direction;
+  }
+  @if $justify-content != false {
+    justify-content: $justify-content;
+  }
+  @if $align-items != false {
+    align-items: $align-items;
+  }
+  @if $gap != false {
+    gap: $gap;
+  }
+  @if $wrap != false {
+    flex-wrap: $wrap;
+  }
+}
+
+@mixin link-hover {
+  &:hover {
+    box-shadow: 0px 6px 10px -10px $border-accent-color;
+  }
+}

@@ -23,11 +23,12 @@
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
       "@pages/*": ["./src/pages/*"],
       "@styles/*": ["./src/styles/*"]
     }
   },
-  "include": ["src/**/*", "**/*.ts", "**/*.tsx"],
+  "include": ["src/**/*", "**/*.ts", "**/*.tsx", "types.d.ts"],
   "exclude": ["./node_modules", "build"]
 }

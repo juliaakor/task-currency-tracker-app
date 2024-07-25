@@ -1,0 +1,78 @@
+@import '@constants/scss/index.scss';
+
+$loader-size: $c-size-x-small;
+$dot-size: 0.833rem;
+$dot-animation-duration: 0.6s;
+
+@mixin animation($name, $duration, $iteration) {
+  animation: $name $duration $iteration;
+}
+
+.loader,
+.loader div {
+  box-sizing: border-box;
+}
+
+.loader {
+  display: inline-block;
+  position: relative;
+  width: $loader-size;
+  height: $loader-size;
+
+  div {
+    position: absolute;
+    top: $c-spacing-4x-medium;
+    width: $dot-size;
+    height: $dot-size;
+    border-radius: 50%;
+    background: $bg-accent-color-highlight;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+
+  div:nth-child(1) {
+    left: 8px;
+    @include animation(point1, $dot-animation-duration, infinite);
+  }
+
+  div:nth-child(2) {
+    left: 8px;
+    @include animation(point2, $dot-animation-duration, infinite);
+  }
+
+  div:nth-child(3) {
+    left: 32px;
+    @include animation(point2, $dot-animation-duration, infinite);
+  }
+
+  div:nth-child(4) {
+    left: 56px;
+    @include animation(point3, $dot-animation-duration, infinite);
+  }
+}
+
+@keyframes point1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes point3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes point2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate($c-spacing-2x-medium, 0);
+  }
+}
