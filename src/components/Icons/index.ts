@@ -10,6 +10,7 @@ export { IFIXIcon } from './IFIXIcon';
 export { LibraIcon } from './libraIcon';
 export { LogoIcon } from './logoIcon';
 export { PesoArgentinoIcon } from './pesoArgentinoIcon';
+export { PulsingCircleIcon } from './pulsingCircleIcon';
 export { SearchIcon } from './searchIcon';
 export { YuanIcon } from './yuanIcon';
 export { YenIcon } from './yenIcon';
