@@ -1,0 +1,16 @@
+@import '@constants/scss/index.scss';
+@import '@styles/mixins.scss';
+
+.selectWrapper {
+  @include input-wrapper;
+}
+
+.label {
+  @include input-label;
+}
+
+.select {
+  font-size: $c-spacing-medium;
+  color: $secondary-text-color-active;
+  @include input-basic;
+}
