@@ -55,5 +55,17 @@ export type CurrenciesType = keyof typeof CURRENCIES;
 
 export type CurrencyDetail = {
   code: string;
-  rate: string;
+  rate: number;
 };
+
+export interface CurrencyResponseType {
+  meta: {
+    last_updated_at: string;
+  };
+  data: {
+    [key: string]: {
+      code: string;
+      value: number;
+    };
+  };
+}
