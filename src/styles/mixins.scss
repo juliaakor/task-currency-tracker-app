@@ -64,6 +64,7 @@
 
 @mixin input-label {
   font-size: $c-spacing-medium;
+  font-weight: $c-font-weight-medium;
   margin-bottom: $c-spacing-x-small;
   color: $secondary-text-color-active;
 }

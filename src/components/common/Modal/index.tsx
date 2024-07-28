@@ -24,10 +24,10 @@ export const Modal = ({ children, isOpen = false, onClose, ...props }: ModalProp
   return createPortal(
     <div className={styles.modal} {...props}>
       <div className={styles.modalBody}>
+        {children}
         <button type="button" className={styles.button} onClick={handleClose}>
           <CloseIcon /> Close
         </button>
-        {children}
       </div>
     </div>,
     portalRoot

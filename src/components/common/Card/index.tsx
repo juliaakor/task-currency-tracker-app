@@ -6,7 +6,7 @@ import * as styles from './style.scss';
 
 export interface CardProps {
   label: string;
-  rate: string;
+  rate: number;
   icon: ReactNode;
   onClick: (code: CurrenciesType) => void;
   code: CurrenciesType;
@@ -28,7 +28,7 @@ export const Card = ({ code, icon, label, onClick, rate, ...props }: CardProps) 
       {icon}
       <div className={styles.currencyWrapper}>
         <h4 className={styles.currencyHeading}>{label}</h4>
-        <span className={styles.rate}>{rate}</span>
+        <span className={styles.rate}>${rate}</span>
       </div>
     </div>
   );

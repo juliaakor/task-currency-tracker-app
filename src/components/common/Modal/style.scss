@@ -16,21 +16,21 @@ $bg-modal-body: rgb(250, 250, 250);
 
 .modalBody {
   width: 50%;
-  height: 70%;
+  height: max-content;
   background: $bg-modal-body;
   border-radius: $c-radius-medium;
-  padding: $c-spacing-x-medium;
+  padding: $c-spacing-5x-medium;
   position: relative;
 }
 
 .button {
   position: absolute;
-  right: $c-spacing-small;
-  bottom: $c-spacing-small;
+  right: $c-spacing-6x-medium;
+  bottom: $c-spacing-5x-medium;
   border: 0;
   background: $primary-button-color;
   @include flex($align-items: center, $gap: $c-spacing-x-small);
-  padding: $c-spacing-x-small $c-spacing-small;
+  padding: $c-spacing-3x-small $c-spacing-small;
   border-radius: $c-radius-small;
 
   &:hover {
