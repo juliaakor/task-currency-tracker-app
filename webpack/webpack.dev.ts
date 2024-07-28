@@ -1,3 +1,5 @@
+import path from 'path';
+
 import Dotenv from 'dotenv-webpack';
 import { Configuration } from 'webpack';
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
@@ -46,7 +48,7 @@ export default merge(commonConfig, {
   },
   plugins: [
     new Dotenv({
-      path: '../.env.local',
+      path: path.join(__dirname, '..', '.env.local'),
     }),
   ],
 }) as Configuration;
