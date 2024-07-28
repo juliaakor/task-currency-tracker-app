@@ -10,6 +10,14 @@ yarn
 yarn prepare
 ```
 
+Create a `.env.local` file:
+
+```bash
+touch .env.local
+```
+
+Add environment variables to this file. An example of the required environment variables can be found in the `.env` file
+
 Run the development server with:
 
 ```bash
