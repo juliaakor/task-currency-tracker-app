@@ -5,12 +5,13 @@ import * as styles from './style.scss';
 export interface InputProps {
   label: string;
   name: string;
+  defaultValue: string;
   type: string;
   onChange: (value: string) => void;
 }
 
-export const Input = ({ label, name, onChange, type = 'text', ...props }: InputProps) => {
-  const [value, setValue] = useState('');
+export const Input = ({ defaultValue, label, name, onChange, type = 'text', ...props }: InputProps) => {
+  const [value, setValue] = useState(defaultValue);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: inputValue } = e.target;
