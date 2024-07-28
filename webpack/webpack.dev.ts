@@ -1,3 +1,4 @@
+import Dotenv from 'dotenv-webpack';
 import { Configuration } from 'webpack';
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import { merge } from 'webpack-merge';
@@ -43,5 +44,9 @@ export default merge(commonConfig, {
     chunkFilename: 'js/[name].bundle.js',
     filename: 'js/[name].bundle.js',
   },
-  plugins: [],
+  plugins: [
+    new Dotenv({
+      path: '../.env.local',
+    }),
+  ],
 }) as Configuration;
