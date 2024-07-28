@@ -1,0 +1,6 @@
+@import '@constants/scss/index.scss';
+@import '@styles/mixins.scss';
+
+.list {
+  @include flex($gap: $c-spacing-large $c-spacing-6x-large, $wrap: wrap, $justify-content: center);
+}
