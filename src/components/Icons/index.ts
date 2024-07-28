@@ -11,6 +11,6 @@ export { LibraIcon } from './libraIcon';
 export { LogoIcon } from './logoIcon';
 export { PesoArgentinoIcon } from './pesoArgentinoIcon';
 export { SearchIcon } from './searchIcon';
-export { WonIcon } from './wonIcon';
+export { YuanIcon } from './yuanIcon';
 export { YenIcon } from './yenIcon';
 export { type IconProps } from './IconTypes';

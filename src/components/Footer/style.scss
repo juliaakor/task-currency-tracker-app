@@ -60,6 +60,7 @@
 .link {
   color: $link-text-color;
   margin-bottom: $c-spacing-3x-medium;
+  width: min-content;
 
   @include link-hover;
 }
