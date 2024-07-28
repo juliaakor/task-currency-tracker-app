@@ -1,3 +1,3 @@
-const { CURRENCY_API_KEY } = process.env;
-
-export { CURRENCY_API_KEY };
+export const env = {
+  CURRENCY_API_KEY: process.env.CURRENCY_API_KEY,
+};
