@@ -4,4 +4,5 @@ export { Input } from './Input';
 export { Modal } from './Modal';
 export { NavItem } from './NavItem';
 export { Select } from './Select';
+export { Status } from './Status';
 export { Switch } from './Switch';

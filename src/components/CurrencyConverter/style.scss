@@ -1,0 +1,19 @@
+@import '@constants/scss/index.scss';
+
+.converter {
+  border: 0;
+}
+
+.fromCurrency {
+  color: $secondary-text-color-active;
+}
+
+.label {
+  font-weight: $c-font-weight-medium;
+  font-size: $c-font-size-2x-small;
+}
+
+.currencyOutput {
+  font-weight: $c-font-weight-semi-bold;
+  font-size: $c-font-size-small;
+}

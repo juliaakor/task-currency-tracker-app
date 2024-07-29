@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-import { CURRENCY_API_KEY } from '@constants/env';
+import { env } from '@constants/env';
 
 export const currencyApi = axios.create({
   baseURL: 'https://api.currencyapi.com/',
   headers: {
     Accept: 'application/json',
-    apikey: CURRENCY_API_KEY,
+    apikey: env.CURRENCY_API_KEY,
   },
   timeout: 10000,
 });

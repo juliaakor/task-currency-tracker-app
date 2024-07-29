@@ -1,5 +1,6 @@
 import path from 'path';
 
+import Dotenv from 'dotenv-webpack';
 import { EsbuildPlugin } from 'esbuild-loader';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -70,6 +71,10 @@ export default {
     new MiniCssExtractPlugin({
       chunkFilename: '[id].[contenthash].css',
       filename: 'css/[name].[contenthash].css',
+    }),
+    new Dotenv({
+      path: path.join(__dirname, '..', '.env.local'),
+      systemvars: true,
     }),
   ],
   resolve: {
