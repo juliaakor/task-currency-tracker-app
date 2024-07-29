@@ -1,28 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { convertResToCurrencyDetail, getFormatedDate } from '@/lib/utils/api';
-import { getExchangeRates } from '@api/index';
-import { CURRENCIES, CurrenciesType, CurrencyDetail, CurrencyResponseType } from '@constants/api';
+import { CURRENCIES, CurrenciesType, CurrencyDetail } from '@constants/api';
+import { getFormatedDate } from '@lib/utils/api';
+import { AppDispatch, RootState } from '@store/index';
+import { fetchCurrencies } from '@store/slices/currencySlice';
 
-// import { mock } from './mock';
-
-export const useFetchCurrencies = (fromCurrency: CurrenciesType) => {
-  const [elements, setElements] = useState<CurrencyDetail[]>([]);
+export const useFetchCurrencies = (fromCurrency: CurrenciesType): CurrencyDetail[] => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { elements, status } = useSelector((state: RootState) => state.currencies);
+  const isChanged =
+    elements.find((currency) => {
+      return currency.code === fromCurrency;
+    })?.rate !== 1;
 
   useEffect(() => {
-    const fetchCurrencies = async () => {
-      const currenciesData = (await getExchangeRates({
-        baseCurrency: fromCurrency,
-        currencies: Object.keys(CURRENCIES).join(','),
-        date: getFormatedDate(),
-      })) as CurrencyResponseType;
-      // const currenciesData = mock;
-
-      setElements(convertResToCurrencyDetail(currenciesData));
-    };
-
-    fetchCurrencies();
-  }, [fromCurrency]);
+    if (status === 'idle' || isChanged) {
+      dispatch(
+        fetchCurrencies({
+          currencies: Object.keys(CURRENCIES).join(','),
+          date: getFormatedDate(),
+          fromCurrency,
+        })
+      );
+    }
+  }, [fromCurrency, status, dispatch, elements, isChanged]);
 
   return elements;
 };

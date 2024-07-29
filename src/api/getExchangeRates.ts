@@ -1,7 +1,7 @@
 import { CurrencyResponseType } from '@constants/api';
 import { currencyApi } from '@lib/axios/config';
 
-interface GetExchangeRatesRequestType {
+export interface GetExchangeRatesRequestType {
   date: string;
   baseCurrency: string;
   currencies: string;
