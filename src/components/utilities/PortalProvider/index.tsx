@@ -1,23 +1,23 @@
-import React, { createContext, useContext, useRef, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { PortalProviderProps } from './types';
 
-const PortalContext = createContext<HTMLDivElement | null>(null);
+const PortalContext = createContext<HTMLElement | null>(null);
 
 export const PortalProvider = ({ children }: PortalProviderProps) => {
-  const portalRootRef = useRef<HTMLDivElement | null>(null);
+  const [portalRoot, setPortalRoot] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     const div = document.createElement('div');
-    portalRootRef.current = div;
     document.body.appendChild(div);
+    setPortalRoot(div);
 
     return () => {
-      if (div) document.body.removeChild(div);
+      document.body.removeChild(div);
     };
   }, []);
 
-  return <PortalContext.Provider value={portalRootRef.current}>{children}</PortalContext.Provider>;
+  return <PortalContext.Provider value={portalRoot}>{portalRoot ? children : null}</PortalContext.Provider>;
 };
 
 export const usePortal = () => {
