@@ -1,21 +1,17 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { CURRENCIES, CurrenciesType, CurrencyDetail } from '@constants/api';
 import { getFormatedDate } from '@lib/utils/api';
-import { AppDispatch, RootState } from '@store/index';
-import { fetchCurrencies } from '@store/slices/currencySlice';
+import { useIsCurrencyChanged, fetchCurrencies } from '@store/currency';
+import { AppDispatch } from '@store/index';
 
 export const useFetchCurrencies = (fromCurrency: CurrenciesType): CurrencyDetail[] => {
   const dispatch = useDispatch<AppDispatch>();
-  const { elements, status } = useSelector((state: RootState) => state.currencies);
-  const isChanged =
-    elements.find((currency) => {
-      return currency.code === fromCurrency;
-    })?.rate !== 1;
+  const { elements, isCurrencyChanged, status } = useIsCurrencyChanged(fromCurrency);
 
   useEffect(() => {
-    if (status === 'idle' || isChanged) {
+    if (status === 'idle' || isCurrencyChanged) {
       dispatch(
         fetchCurrencies({
           currencies: Object.keys(CURRENCIES).join(','),
@@ -24,7 +20,7 @@ export const useFetchCurrencies = (fromCurrency: CurrenciesType): CurrencyDetail
         })
       );
     }
-  }, [fromCurrency, status, dispatch, elements, isChanged]);
+  }, [fromCurrency, status, dispatch, isCurrencyChanged]);
 
   return elements;
 };

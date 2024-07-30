@@ -1,8 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-import { getExchangeRates } from '@api/index';
-import { CurrenciesType, CurrencyDetail, CurrencyResponseType } from '@constants/api';
-import { convertResToCurrencyDetail } from '@lib/utils/api';
+import { CurrencyDetail } from '@constants/api';
+import { fetchCurrencies } from '@store/currency/currencyThunk';
 
 export interface CurrencyState {
   elements: CurrencyDetail[];
@@ -17,19 +16,6 @@ const initialState: CurrencyState = {
   error: null,
   status: 'idle',
 };
-
-export const fetchCurrencies = createAsyncThunk(
-  'currencies/fetchCurrencies',
-  async ({ currencies, date, fromCurrency }: { fromCurrency: CurrenciesType; currencies: string; date: string }) => {
-    const currenciesData = (await getExchangeRates({
-      baseCurrency: fromCurrency,
-      currencies,
-      date,
-    })) as CurrencyResponseType;
-
-    return convertResToCurrencyDetail(currenciesData);
-  }
-);
 
 const currencySlice = createSlice({
   extraReducers: (builder) => {
@@ -60,4 +46,4 @@ const currencySlice = createSlice({
   reducers: {},
 });
 
-export default currencySlice.reducer;
+export const currencyReducer = currencySlice.reducer;
