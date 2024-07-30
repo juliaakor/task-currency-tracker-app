@@ -1,3 +1,5 @@
+import { FooterRoutesProps } from '@type/routes';
+
 export const ROUTES = {
   BANK_CARD: 'bank-card',
   CONTACT: 'contact',
@@ -6,16 +8,6 @@ export const ROUTES = {
   NOT_FOUND: '*',
   TIMELINE: 'timeline',
 };
-
-interface RouteProps {
-  linkLabel: string;
-  link: string;
-}
-
-interface FooterRoutesProps {
-  label: string;
-  section: Array<RouteProps>;
-}
 
 export const FOOTER_ROUTES: FooterRoutesProps[] = [
   {
