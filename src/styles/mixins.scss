@@ -68,3 +68,26 @@
   margin-bottom: $c-spacing-x-small;
   color: $secondary-text-color-active;
 }
+
+@mixin breakpoint($point) {
+  @if $point == 375 {
+    @media (max-width: 375px) {
+      @content;
+    }
+  }
+  @if $point == 425 {
+    @media (max-width: 425px) {
+      @content;
+    }
+  }
+  @if $point == 768 {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  @if $point == 1024 {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+}

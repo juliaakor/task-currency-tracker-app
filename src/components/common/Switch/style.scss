@@ -1,4 +1,5 @@
 @import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
 
 $line-weight: 2px;
 $circle-size: 1.875rem;
@@ -12,8 +13,8 @@ $transition-duration-n-timing: 0.3s ease;
 }
 
 .switch {
-  width: 100%;
-  height: 100%;
+  width: $c-size-full;
+  height: $c-size-full;
   border: $line-weight solid $primary-text-color;
   background: transparent;
   border-radius: 15px;
