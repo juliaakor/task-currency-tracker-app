@@ -13,11 +13,11 @@ export const currencyApi = axios.create({
 });
 
 currencyApi.interceptors.request.use(
-  (config) => {
+  async (config) => {
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
+  async (error) => {
+    throw error;
   }
 );
 
