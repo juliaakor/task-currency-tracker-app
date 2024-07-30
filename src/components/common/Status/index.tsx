@@ -3,10 +3,7 @@ import React from 'react';
 import { PulsingCircleIcon } from '@components/Icons';
 
 import * as styles from './style.scss';
-
-export interface StatusProps {
-  value: string;
-}
+import { StatusProps } from './types';
 
 export const Status = ({ value, ...props }: StatusProps) => {
   return (

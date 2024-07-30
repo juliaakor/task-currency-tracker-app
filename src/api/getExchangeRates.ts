@@ -7,7 +7,11 @@ export interface GetExchangeRatesRequestType {
   currencies: string;
 }
 
-export const getExchangeRates = async ({ baseCurrency, currencies, date }: GetExchangeRatesRequestType) => {
+export const getExchangeRates = async ({
+  baseCurrency,
+  currencies,
+  date,
+}: GetExchangeRatesRequestType): Promise<CurrencyResponseType> => {
   try {
     const request = `v3/historical?date=${date}&base_currency=${baseCurrency}&currencies=${currencies}`;
     const response = await currencyApi.get<CurrencyResponseType>(request);

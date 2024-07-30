@@ -53,19 +53,20 @@ export const CURRENCIES: Record<string, Currency> = {
 
 export type CurrenciesType = keyof typeof CURRENCIES;
 
-export type CurrencyDetail = {
+export interface CurrencyDetail {
   code: string;
   rate: number;
-};
+}
 
 export interface CurrencyResponseType {
   meta: {
     last_updated_at: string;
   };
-  data: {
-    [key: string]: {
-      code: string;
-      value: number;
-    };
-  };
+  data: Record<string, CurrencyDetail>;
+}
+
+export interface CurrencyRequestType {
+  fromCurrency: CurrenciesType;
+  currencies: string;
+  date: string;
 }

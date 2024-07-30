@@ -5,12 +5,7 @@ import { CloseIcon } from '@components/Icons';
 import { usePortal } from '@components/utilities';
 
 import * as styles from './style.scss';
-
-type ModalProps = {
-  children: React.ReactNode;
-  onClose: () => void;
-  isOpen?: boolean;
-};
+import { ModalProps } from './types';
 
 export const Modal = ({ children, isOpen = false, onClose, ...props }: ModalProps) => {
   const portalRoot = usePortal();

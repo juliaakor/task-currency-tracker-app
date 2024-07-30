@@ -1,10 +1,8 @@
-import React, { createContext, useContext, useRef, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useRef, useEffect } from 'react';
+
+import { PortalProviderProps } from './types';
 
 const PortalContext = createContext<HTMLDivElement | null>(null);
-
-interface PortalProviderProps {
-  children: ReactNode;
-}
 
 export const PortalProvider = ({ children }: PortalProviderProps) => {
   const portalRootRef = useRef<HTMLDivElement | null>(null);
