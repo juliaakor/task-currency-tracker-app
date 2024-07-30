@@ -19,7 +19,7 @@ export const CardList = ({ elements, heading, onCardClick, ...props }: CardListP
 
   return (
     <div className={styles.listWrapper}>
-      {elements.length > 0 ? (
+      {elements ? (
         <div className={styles.list} {...props}>
           <h3 className={styles.heading}>{heading}</h3>
           {elements.map(({ code, rate }) => (

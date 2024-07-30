@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import * as styles from './style.scss';
 
@@ -17,11 +17,8 @@ export const Input = ({ defaultValue, label, name, onChange, type = 'text', ...p
     const { value: inputValue } = e.target;
 
     setValue(inputValue);
-  };
-
-  useEffect(() => {
     onChange(value);
-  }, [onChange, value]);
+  };
 
   return (
     <div className={styles.inputWrapper}>

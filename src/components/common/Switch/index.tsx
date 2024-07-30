@@ -4,21 +4,22 @@ import * as styles from './style.scss';
 
 export const Switch = () => {
   const [isOn, setIsOn] = useState(false);
+  const switcherStatusStyle = isOn ? styles.on : styles.off;
 
   const toggleSwitch = () => {
     setIsOn(!isOn);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      toggleSwitch();
-      event.preventDefault();
-    }
+    if (event.key !== 'Enter') return;
+
+    toggleSwitch();
+    event.preventDefault();
   };
 
   return (
     <div
-      className={`${styles.themeSwitcher} ${isOn ? styles.on : styles.off}`}
+      className={`${styles.themeSwitcher} ${switcherStatusStyle}`}
       onClick={toggleSwitch}
       onKeyDown={handleKeyDown}
       role="switch"
