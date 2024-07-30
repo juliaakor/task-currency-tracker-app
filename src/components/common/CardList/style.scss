@@ -1,4 +1,4 @@
-@import '@constants/scss/index.scss';
+@import '@styles/variables/index.scss';
 @import '@styles/mixins.scss';
 
 .listWrapper {
@@ -23,7 +23,7 @@
   border-bottom: 2px solid $border-color;
 }
 
-@media (max-width: 920px) {
+@include breakpoint($point: 768) {
   .list {
     grid-template-columns: 1fr;
   }

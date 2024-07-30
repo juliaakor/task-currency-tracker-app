@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import * as styles from './style.scss';
-
-export interface InputProps {
-  label: string;
-  name: string;
-  defaultValue: string;
-  type: string;
-  onChange: (value: string) => void;
-}
+import { InputProps } from './types';
 
 export const Input = ({ defaultValue, label, name, onChange, type = 'text', ...props }: InputProps) => {
   const [value, setValue] = useState(defaultValue);
@@ -17,11 +10,8 @@ export const Input = ({ defaultValue, label, name, onChange, type = 'text', ...p
     const { value: inputValue } = e.target;
 
     setValue(inputValue);
-  };
-
-  useEffect(() => {
     onChange(value);
-  }, [onChange, value]);
+  };
 
   return (
     <div className={styles.inputWrapper}>

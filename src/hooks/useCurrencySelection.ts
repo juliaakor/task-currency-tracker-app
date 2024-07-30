@@ -1,17 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 import { CurrenciesType } from '@constants/api';
-import { RootState } from '@store/index';
+import { useCurrencyElements } from '@store/currency';
 
 import { useFetchCurrencies } from './useFetchCurrencies';
 
 export const useCurrencySelection = () => {
-  const { elements: storageElements } = useSelector((state: RootState) => state.currencies);
-  const initialCurrency = storageElements.find((currency) => {
-    return currency.rate === 1;
-  });
-
+  const { initialCurrency } = useCurrencyElements();
   const [fromCurrency, setFromCurrency] = useState<CurrenciesType>(initialCurrency?.code || 'USD');
   const [toCurrency, setToCurrency] = useState<CurrenciesType>('EUR');
   const [amount, setAmount] = useState(1);

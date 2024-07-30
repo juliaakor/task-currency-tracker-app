@@ -2,15 +2,10 @@ import React from 'react';
 
 import { Card } from '@components/common/Card';
 import { Loader } from '@components/Loader';
-import { CURRENCIES, CurrenciesType, CurrencyDetail } from '@constants/api';
+import { CURRENCIES, CurrenciesType } from '@constants/api';
 
 import * as styles from './style.scss';
-
-interface CardListProps {
-  heading: string;
-  elements: Array<CurrencyDetail>;
-  onCardClick: (currencyKey: CurrenciesType) => void;
-}
+import { CardListProps } from './types';
 
 export const CardList = ({ elements, heading, onCardClick, ...props }: CardListProps) => {
   const handleCardClick = (code: CurrenciesType) => () => {
@@ -19,7 +14,7 @@ export const CardList = ({ elements, heading, onCardClick, ...props }: CardListP
 
   return (
     <div className={styles.listWrapper}>
-      {elements.length > 0 ? (
+      {elements ? (
         <div className={styles.list} {...props}>
           <h3 className={styles.heading}>{heading}</h3>
           {elements.map(({ code, rate }) => (

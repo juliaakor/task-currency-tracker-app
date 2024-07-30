@@ -1,16 +1,17 @@
-@import '@constants/scss/index.scss';
+@import '@styles/variables/index.scss';
 
 .converter {
   border: 0;
 }
 
 .fromCurrency {
-  color: $secondary-text-color-active;
+  color: $primary-text-color;
 }
 
 .label {
   font-weight: $c-font-weight-medium;
   font-size: $c-font-size-2x-small;
+  color: $primary-text-color;
 }
 
 .currencyOutput {

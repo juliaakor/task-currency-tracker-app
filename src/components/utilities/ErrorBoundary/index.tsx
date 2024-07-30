@@ -1,14 +1,7 @@
 import React, { Component, ErrorInfo } from 'react';
 
 import * as styles from './style.scss';
-
-interface ErrorBoundaryProps {
-  children: React.ReactNode;
-}
-
-interface ErrorState {
-  hasError: boolean;
-}
+import { ErrorBoundaryProps, ErrorState } from './types';
 
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorState> {
   constructor(props: ErrorBoundaryProps) {
@@ -24,7 +17,6 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorState> {
     // console error used instead of logger func
     // eslint-disable-next-line no-console
     console.error('ErrorBoundary caught an error: ', error, errorInfo);
-    this.setState({ hasError: true });
   }
 
   render() {

@@ -30,7 +30,8 @@
       "@lib/*": ["./src/lib/*"],
       "@pages/*": ["./src/pages/*"],
       "@store/*": ["./src/store/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@type/*": ["./src/types/*"]
     }
   },
   "include": ["src/**/*", "**/*.ts", "**/*.tsx", "types.d.ts"],

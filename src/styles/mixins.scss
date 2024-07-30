@@ -46,9 +46,11 @@
   border-radius: $c-radius-small;
   outline: none;
   transition: all 0.3s ease-out;
+  background: $primary-button-color;
+  color: $secondary-text-color;
 
   &:focus {
-    box-shadow: 0px 7px 10px -10px $border-accent-color;
+    box-shadow: 0px 7px 10px -10px $border-accent-color-light;
   }
 
   &:hover {
@@ -66,5 +68,28 @@
   font-size: $c-spacing-medium;
   font-weight: $c-font-weight-medium;
   margin-bottom: $c-spacing-x-small;
-  color: $secondary-text-color-active;
+  color: $secondary-text-color;
+}
+
+@mixin breakpoint($point) {
+  @if $point == 375 {
+    @media (max-width: 375px) {
+      @content;
+    }
+  }
+  @if $point == 425 {
+    @media (max-width: 425px) {
+      @content;
+    }
+  }
+  @if $point == 768 {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  @if $point == 1024 {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
 }

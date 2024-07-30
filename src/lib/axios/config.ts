@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { env } from '@constants/env';
+import { StatusCode } from '@type/axios';
 
 export const currencyApi = axios.create({
   baseURL: 'https://api.currencyapi.com/',
@@ -12,18 +13,22 @@ export const currencyApi = axios.create({
 });
 
 currencyApi.interceptors.request.use(
-  (config) => {
+  async (config) => {
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
+  async (error) => {
+    throw error;
   }
 );
 
 currencyApi.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response.status === 429 || error.response.status === 400 || error.response.status === 403) {
+    if (
+      error.response.status === StatusCode.TooManyRequests ||
+      error.response.status === StatusCode.BadRequest ||
+      error.response.status === StatusCode.Forbidden
+    ) {
       return Promise.reject(error.response.data);
     }
 

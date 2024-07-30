@@ -1,8 +1,8 @@
-@import '@constants/scss/index.scss';
+@import '@styles/variables/index.scss';
 @import '@styles/mixins.scss';
 
 .nav {
-  width: 100%;
+  width: $c-size-full;
   height: $c-size-small;
   background: $bg-primary-color;
   @include flex($justify-content: space-around, $align-items: center);
