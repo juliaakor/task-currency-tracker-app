@@ -4,6 +4,6 @@ export interface SelectProps {
   label: string;
   name: string;
   value: CurrenciesType;
-  options: { [key: string]: string };
+  options: Record<string, string>;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }

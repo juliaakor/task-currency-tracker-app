@@ -7,7 +7,7 @@ export const Switch = () => {
   const switcherStatusStyle = isOn ? styles.on : styles.off;
 
   const toggleSwitch = () => {
-    setIsOn(!isOn);
+    setIsOn((prevState) => !prevState);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
