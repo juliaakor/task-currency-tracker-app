@@ -1,0 +1,33 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.status {
+  @include flex($justify-content: center, $align-items: center, $gap: $c-spacing-x-medium);
+  margin-top: $c-spacing-x-large;
+
+  svg {
+    animation: pulse 2s infinite;
+  }
+
+  .statusValue {
+    color: $secondary-text-color;
+    font-size: $c-font-size-large;
+    line-height: $c-line-height-x-medium;
+    font-weight: $c-font-weight-thin;
+  }
+}

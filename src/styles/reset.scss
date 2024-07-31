@@ -1,0 +1,53 @@
+@import '@styles/variables/index.scss';
+
+html {
+  height: $c-size-full;
+  font-size: calc(8px + 0.39vw);
+  background: $bg-primary-color;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  transition: all 0.4s ease-out;
+}
+
+#root {
+  margin: 0 auto;
+  isolation: isolate;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: $c-size-full;
+  max-height: $c-size-full;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}

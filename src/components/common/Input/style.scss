@@ -1,0 +1,18 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.input {
+  @include input-basic;
+}
+
+.infoWrapper {
+  padding: $c-spacing-3x-small;
+}
+
+.label {
+  @include input-label;
+}
+
+.inputWrapper {
+  @include input-wrapper;
+}

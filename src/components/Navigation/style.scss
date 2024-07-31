@@ -1,0 +1,18 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.nav {
+  width: $c-size-full;
+  height: $c-size-small;
+  background: $bg-primary-color;
+  @include flex($justify-content: space-around, $align-items: center);
+
+  .navItems {
+    list-style-type: none;
+    @include flex($gap: $c-spacing-5x-large);
+
+    & a {
+      @include link-hover;
+    }
+  }
+}

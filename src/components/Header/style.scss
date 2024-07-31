@@ -1,0 +1,51 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.header {
+  background: linear-gradient(252.93deg, rgba(18, 18, 18, 1) 11.77%, rgba(36, 121, 64, 0) 91.12%);
+  padding: $c-spacing-4x-medium 0 $c-spacing-large 0;
+  max-height: $c-size-large;
+  @include flex($align-items: end);
+
+  svg {
+    min-width: 19rem;
+    min-height: 19rem;
+  }
+}
+
+.infoContainer {
+  width: 55%;
+  text-align: end;
+
+  .infoParagraph {
+    width: 50%;
+    float: right;
+    text-align: center;
+  }
+}
+
+.heading,
+.headingHighlight {
+  @include signature-linear-colors-text;
+  font-weight: $c-font-weight-semi-bold;
+  line-height: $c-line-height-3x-large;
+  letter-spacing: 1px;
+}
+
+.heading {
+  font-size: $c-font-size-4x-large;
+  padding-right: $c-spacing-2x-large;
+}
+
+.headingHighlight {
+  font-size: $c-font-size-3x-large;
+  padding: $c-spacing-2x-small $c-spacing-medium;
+}
+
+.infoParagraph {
+  font-weight: $c-font-weight-thin;
+  font-size: $c-font-size-medium;
+  line-height: $c-line-height-large;
+  color: $secondary-text-color;
+  letter-spacing: 1px;
+}

@@ -1,0 +1,11 @@
+@import '@styles/variables/index.scss';
+
+.errorBoundaryWrapper {
+  margin: 10% auto;
+  width: fit-content;
+  color: $secondary-text-color;
+  font-size: $c-font-size-2x-small;
+  font-weight: $c-font-weight-thin;
+  padding: $c-spacing-x-small $c-spacing-3x-medium;
+  box-shadow: 0px 6px 10px -10px $border-accent-color;
+}

@@ -1,0 +1,43 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+$line-weight: 2px;
+$circle-size: 1.875rem;
+$transition-duration-n-timing: 0.3s ease;
+
+.themeSwitcher {
+  width: $circle-size * 2;
+  height: $circle-size;
+  cursor: pointer;
+  transition: background-color $transition-duration-n-timing;
+}
+
+.switch {
+  width: $c-size-full;
+  height: $c-size-full;
+  border: $line-weight solid $primary-text-color;
+  background: transparent;
+  border-radius: 15px;
+  position: relative;
+  transition: background-color $transition-duration-n-timing;
+}
+
+.circle {
+  width: $circle-size;
+  height: $circle-size;
+  border: $line-weight solid $primary-text-color;
+  background: transparent;
+  border-radius: $c-radius-circle;
+  position: absolute;
+  top: $c-radius-circle;
+  transform: translateY(-$c-radius-circle);
+  transition: left $transition-duration-n-timing;
+}
+
+.on .circle {
+  left: $circle-size - 0.075;
+}
+
+.off .circle {
+  left: -1px;
+}

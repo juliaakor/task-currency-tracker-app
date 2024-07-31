@@ -1,0 +1,95 @@
+@mixin signature-linear-colors-text {
+  background: linear-gradient(
+    90.18deg,
+    $logo-gradient-start-rgb 0.18%,
+    $logo-gradient-middle-rgb 49.3%,
+    $logo-gradient-end-rgb 99.88%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin flex($direction: row, $justify-content: false, $align-items: false, $gap: false, $wrap: false) {
+  display: flex;
+  @if $direction != row {
+    flex-direction: $direction;
+  }
+  @if $justify-content != false {
+    justify-content: $justify-content;
+  }
+  @if $align-items != false {
+    align-items: $align-items;
+  }
+  @if $gap != false {
+    gap: $gap;
+  }
+  @if $wrap != false {
+    flex-wrap: $wrap;
+  }
+}
+
+@mixin link-hover {
+  &:hover {
+    box-shadow: 0px 9px 10px -10px $border-accent-color-hover;
+  }
+}
+
+@mixin text-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin input-basic {
+  border: 1px solid transparent;
+  padding: $c-spacing-3x-small $c-spacing-x-medium;
+  border-radius: $c-radius-small;
+  outline: none;
+  transition: all 0.3s ease-out;
+  background: $primary-button-color;
+  color: $secondary-text-color;
+
+  &:focus {
+    box-shadow: 0px 7px 10px -10px $border-accent-color-light;
+  }
+
+  &:hover {
+    border: 1px solid $border-accent-color-light;
+  }
+}
+
+@mixin input-wrapper {
+  @include flex($direction: column);
+  padding: $c-spacing-x-small;
+  margin-bottom: $c-spacing-medium;
+}
+
+@mixin input-label {
+  font-size: $c-spacing-medium;
+  font-weight: $c-font-weight-medium;
+  margin-bottom: $c-spacing-x-small;
+  color: $secondary-text-color;
+}
+
+@mixin breakpoint($point) {
+  @if $point == 375 {
+    @media (max-width: 375px) {
+      @content;
+    }
+  }
+  @if $point == 425 {
+    @media (max-width: 425px) {
+      @content;
+    }
+  }
+  @if $point == 768 {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  @if $point == 1024 {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+}

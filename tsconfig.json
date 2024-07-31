@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "allowJs": true,
+    "jsx": "preserve",
+    "lib": ["DOM", "DOM.Iterable", "ES6"],
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "incremental": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@api/*": ["./src/api/*"],
+      "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@store/*": ["./src/store/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@type/*": ["./src/types/*"]
+    }
+  },
+  "include": ["src/**/*", "**/*.ts", "**/*.tsx", "types.d.ts"],
+  "exclude": ["./node_modules", "build"]
+}

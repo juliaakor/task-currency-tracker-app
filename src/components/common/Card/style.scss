@@ -1,0 +1,35 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.card {
+  @include flex($gap: $c-spacing-3x-medium);
+  width: $c-size-3x-large;
+  height: $c-size-medium;
+  background: $bg-card-color;
+  border: 1px solid $border-color;
+  border-radius: $c-radius-medium;
+  padding: $c-spacing-3x-medium $c-spacing-3x-medium;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 13px 10px -10px $border-color;
+  }
+}
+
+.currencyWrapper {
+  width: 75%;
+}
+
+.currencyHeading {
+  @include text-wrap;
+  color: $secondary-text-color;
+  font-size: $c-font-size-x-large;
+  line-height: $c-line-height-x-large;
+}
+
+.rate {
+  color: $label-text-color;
+  font-size: $c-font-size-large;
+  line-height: $c-line-height-x-medium;
+  font-weight: $c-font-weight-thin;
+}

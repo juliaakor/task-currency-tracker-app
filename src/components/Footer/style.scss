@@ -1,0 +1,66 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.footer {
+  @include flex($wrap: wrap, $justify-content: space-around, $gap: $c-spacing-4x-large);
+  margin-top: $c-spacing-3x-large;
+}
+
+.heading,
+.infoParagraph,
+.copyright,
+.link {
+  font-size: $c-font-size-medium;
+  line-height: $c-line-height-medium;
+  letter-spacing: 1px;
+}
+
+.heading {
+  @include signature-linear-colors-text;
+  font-weight: $c-font-weight-semi-bold;
+  display: inline-flex;
+  align-items: center;
+  gap: $c-spacing-medium;
+  margin-bottom: $c-spacing-4x-medium;
+}
+
+.infoParagraph {
+  font-weight: $c-font-weight-thin;
+  color: $secondary-text-color;
+}
+
+.companyInfo {
+  width: 35%;
+}
+
+.copyright {
+  font-family: $c-font-family-secondary;
+  color: $link-text-color;
+  width: $c-size-full;
+  text-align: center;
+}
+
+.footerNav {
+  width: 40%;
+  @include flex($gap: $c-spacing-2x-large);
+
+  ul {
+    @include flex($direction: column);
+    list-style-type: none;
+  }
+}
+
+.linkSection {
+  color: $secondary-text-color;
+  font-size: $c-font-size-2x-medium;
+  line-height: $c-line-height-2x-medium;
+  margin-bottom: $c-spacing-5x-medium;
+}
+
+.link {
+  color: $link-text-color;
+  margin-bottom: $c-spacing-3x-medium;
+  width: min-content;
+
+  @include link-hover;
+}
