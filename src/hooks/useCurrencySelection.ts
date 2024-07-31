@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 
 import { CurrenciesType } from '@constants/api';
-import { useCurrencyElements } from '@store/currency';
+import { currencySelector } from '@store/currency';
+import { useAppSelector } from '@store/index';
 
 import { useFetchCurrencies } from './useFetchCurrencies';
 
 export const useCurrencySelection = () => {
-  const { initialCurrency } = useCurrencyElements();
+  const { initialCurrency } = useAppSelector(currencySelector);
   const [fromCurrency, setFromCurrency] = useState<CurrenciesType>(initialCurrency?.code || 'USD');
   const [toCurrency, setToCurrency] = useState<CurrenciesType>('EUR');
   const [amount, setAmount] = useState(1);

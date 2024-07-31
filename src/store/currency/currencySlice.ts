@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import { createSlice } from '@reduxjs/toolkit';
 
 import { CurrencyDetail } from '@constants/api';
@@ -13,11 +12,7 @@ export enum CurrencyStateStatus {
 
 export interface CurrencyState {
   elements: CurrencyDetail[];
-  status:
-    | CurrencyStateStatus.idle
-    | CurrencyStateStatus.loading
-    | CurrencyStateStatus.succeeded
-    | CurrencyStateStatus.failed;
+  status: CurrencyStateStatus;
   error: string | null;
   cache: Record<string, CurrencyDetail[]>;
 }

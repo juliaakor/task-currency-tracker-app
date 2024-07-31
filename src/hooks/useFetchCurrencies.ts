@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { CURRENCIES, CurrenciesType, CurrencyDetail } from '@constants/api';
 import { getFormatedDate } from '@lib/utils/api';
-import { useIsCurrencyChanged, fetchCurrencies, CurrencyStateStatus } from '@store/currency';
-import { AppDispatch } from '@store/index';
+import { isCurrencyChangedSelector, fetchCurrencies, CurrencyStateStatus } from '@store/currency';
+import { useAppDispatch, useAppSelector } from '@store/index';
 
 export const useFetchCurrencies = (fromCurrency: CurrenciesType): CurrencyDetail[] => {
-  const dispatch = useDispatch<AppDispatch>();
-  const { elements, isCurrencyChanged, status } = useIsCurrencyChanged(fromCurrency);
+  const dispatch = useAppDispatch();
+  const { elements, isCurrencyChanged, status } = useAppSelector(isCurrencyChangedSelector(fromCurrency));
 
   useEffect(() => {
     if (status === CurrencyStateStatus.idle || isCurrencyChanged) {
