@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ContactFormWithObserver } from '@components/ContactForm';
+
 export const ContactPage = () => {
-  return <div />;
+  return <ContactFormWithObserver />;
 };
