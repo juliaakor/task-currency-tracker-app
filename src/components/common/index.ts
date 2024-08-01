@@ -1,6 +1,7 @@
 export { Button } from './Button';
 export { Card } from './Card';
 export { CardList } from './CardList';
+export { ElasticSearch } from './ElasticSearch';
 export { Form } from './Form';
 export { Input } from './Input';
 export { Modal } from './Modal';
