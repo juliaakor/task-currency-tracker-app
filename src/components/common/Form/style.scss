@@ -1,0 +1,15 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.form {
+  height: max-content;
+  background: $bg-card-color;
+  border-radius: $c-radius-medium;
+  padding: $c-spacing-large $c-spacing-3x-medium;
+  position: relative;
+  color: $primary-text-color;
+}
+
+.buttonWrapper {
+  padding: $c-spacing-x-small;
+}

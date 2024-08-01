@@ -1,0 +1,16 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.button {
+  border: 0;
+  background: $primary-button-color;
+  @include flex($align-items: center, $gap: $c-spacing-x-small);
+  padding: $c-spacing-3x-small $c-spacing-small;
+  border-radius: $c-radius-small;
+  color: $secondary-text-color-active;
+  font-weight: $c-font-weight-medium;
+
+  &:hover {
+    box-shadow: 5px 5px 5px -5px $border-accent-color-light;
+  }
+}

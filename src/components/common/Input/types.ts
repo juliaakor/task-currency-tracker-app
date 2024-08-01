@@ -4,4 +4,5 @@ export interface InputProps {
   defaultValue: string;
   type: string;
   onChange: (value: string) => void;
+  error?: string;
 }
