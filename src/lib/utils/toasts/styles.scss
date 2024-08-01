@@ -1,0 +1,9 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+$bg-toast-color: lighten($bg-card-color, 30%);
+
+.toast {
+  background: $bg-toast-color;
+  color: $primary-text-color;
+}
