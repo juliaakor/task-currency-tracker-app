@@ -1,3 +1,4 @@
+export { BankMap } from './BankMap';
 export { Button } from './Button';
 export { Card } from './Card';
 export { CardList } from './CardList';
