@@ -1,0 +1,52 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.mapContainer {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.marker {
+  background-color: $bg-accent-color-highlight;
+  width: $c-spacing-x-medium;
+  height: $c-spacing-x-medium;
+  border-radius: $c-radius-circle;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.marker:focus,
+.marker:hover {
+  transform: scale(1.2);
+  border: 1px solid $border-accent-color-light;
+}
+
+.popup {
+  color: $secondary-text-color-active;
+  background-color: transparent;
+  width: $c-size-x-medium;
+
+  .map-popup-content {
+    padding: $c-spacing-medium;
+    font-size: $c-font-size-2x-small;
+    color: $secondary-text-color-active;
+
+    button {
+      font-size: $c-font-size-2x-small;
+      width: $c-spacing-x-medium;
+      height: $c-spacing-x-medium;
+    }
+
+    .modalBankName {
+      text-align: center;
+      font-size: $c-font-size-2x-small;
+    }
+
+    .modalBankInfo {
+      font-size: $c-font-size-3x-small;
+    }
+  }
+}

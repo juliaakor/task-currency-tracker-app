@@ -51,3 +51,27 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
+$scrollbar-size: 0.75rem;
+$scrollbar-thumb-color: rgb(136, 136, 136);
+$scrollbar-track-color: rgb(241, 241, 241);
+
+::-webkit-scrollbar {
+  width: $scrollbar-size;
+  height: $scrollbar-size;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $scrollbar-thumb-color;
+  border-radius: $c-radius-small;
+  border: 2px solid lighten($scrollbar-thumb-color, 3%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: lighten($scrollbar-thumb-color, 3%);
+}
+
+::-webkit-scrollbar-track {
+  background: $scrollbar-track-color;
+  border-radius: $c-radius-small;
+}

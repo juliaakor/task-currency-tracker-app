@@ -1,0 +1,25 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.dropdownItem {
+  @include flex($justify-content: space-between, $align-items: center);
+  padding: 0 $c-spacing-2x-medium;
+  color: $secondary-text-color;
+  border-radius: $c-radius-medium;
+
+  &:hover {
+    background: lighten($bg-card-color, 5%);
+  }
+}
+
+.dropdownIcon {
+  width: $c-size-2x-small;
+}
+
+.dropdownLabel {
+  font-size: $c-font-size-medium;
+}
+
+.dropdownLabelInfo {
+  color: $bg-accent-color-success;
+}
