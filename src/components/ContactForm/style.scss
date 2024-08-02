@@ -1,0 +1,15 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.contactForm {
+  width: 50%;
+  margin: $c-spacing-6x-medium auto;
+}
+
+.heading {
+  font-size: $c-font-size-3x-medium;
+  font-weight: $c-font-weight-thin;
+  margin-bottom: $c-spacing-medium;
+  color: $primary-text-color;
+  text-align: center;
+}

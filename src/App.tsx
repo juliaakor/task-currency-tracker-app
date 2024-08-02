@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Footer, Header, Navigation } from '@components/index';
@@ -17,6 +18,7 @@ export const App = () => {
           return <Route Component={Component} key={path} path={path} />;
         })}
       </Routes>
+      <Toaster />
       <Footer />
     </BrowserRouter>
   );

@@ -1,0 +1,15 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.bankCardContainer {
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: $c-font-size-2x-large;
+  font-weight: $c-font-weight-regular;
+  line-height: $c-line-height-2x-large;
+  margin: $c-spacing-5x-large 0 $c-spacing-2x-medium 0;
+  color: $primary-text-color;
+  text-align: center;
+}

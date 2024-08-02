@@ -71,6 +71,13 @@
   color: $secondary-text-color;
 }
 
+@mixin error-text {
+  font-size: $c-spacing-medium;
+  font-weight: $c-font-weight-thin;
+  margin-top: $c-spacing-x-small;
+  color: $bg-accent-color-error;
+}
+
 @mixin breakpoint($point) {
   @if $point == 375 {
     @media (max-width: 375px) {

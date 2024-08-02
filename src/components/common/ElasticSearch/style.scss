@@ -1,0 +1,42 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+$bg-card-color: rgba(32, 32, 37, 1);
+$elastic-search-width: 30%;
+
+.elasticSearchContainer {
+  width: $elastic-search-width;
+  margin: 0 auto $c-spacing-2x-large auto;
+
+  div {
+    margin: 0;
+
+    input {
+      font-size: $c-font-size-x-small;
+      line-height: $c-line-height-x-small;
+      padding: $c-spacing-x-medium;
+      background: $bg-card-color;
+      border-radius: $c-radius-medium;
+
+      &::placeholder {
+        color: $disabled-text-color;
+      }
+    }
+  }
+}
+
+.dropdownContainer {
+  margin: 0 auto;
+  display: none;
+  background-color: lighten($bg-card-color, 2%);
+  border-radius: $c-radius-medium;
+  width: $elastic-search-width;
+  z-index: 99;
+  position: absolute;
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+.dropdownContainer.show {
+  display: block;
+}

@@ -1,3 +1,5 @@
+export { BankCard } from './BankCard';
+export { ContactFormWithObserver } from './ContactForm';
 export { CurrencyConverter } from './CurrencyConverter';
 export { Loader } from './Loader';
 export { Footer } from './Footer';
