@@ -3,18 +3,10 @@ import React from 'react';
 import { DropdownOption } from '@components/common/DropdownOption';
 import { CurrencyOption } from '@components/common/DropdownOption/types';
 import { Input } from '@components/common/Input';
-import { CURRENCIES } from '@constants/api';
+import { initSelectedOptionState } from '@lib/utils/api';
 
 import * as styles from './style.scss';
 import { SearchProps, SearchState } from './types';
-
-const initSelectedOptionState = () => {
-  return Object.keys(CURRENCIES).map((key) => ({
-    code: key,
-    icon: CURRENCIES[key].icon,
-    label: CURRENCIES[key].label,
-  }));
-};
 
 export class ElasticSearch extends React.Component<SearchProps, SearchState> {
   constructor(props: SearchProps) {
@@ -51,7 +43,7 @@ export class ElasticSearch extends React.Component<SearchProps, SearchState> {
 
   filterOptions = (query: string) => {
     if (query.length === 0) {
-      this.setState({ options: [] });
+      this.setState({ options: initSelectedOptionState() });
 
       return;
     }
