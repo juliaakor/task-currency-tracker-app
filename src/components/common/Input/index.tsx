@@ -21,7 +21,7 @@ export const Input = ({
     const { value: inputValue } = e.target;
 
     setValue(inputValue);
-    onChange(value);
+    onChange(inputValue);
   };
 
   return (
