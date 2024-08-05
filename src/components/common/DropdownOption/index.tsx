@@ -28,6 +28,7 @@ export class DropdownOption extends React.Component<OptionProps, OptionState> {
         className={styles.dropdownItem}
         onClick={this.handleClick}
         onKeyDown={this.handleClick}
+        data-selected={selected}
       >
         <span className={styles.dropdownIcon} data-selected={selected}>
           {option.icon}

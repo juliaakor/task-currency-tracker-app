@@ -2,6 +2,7 @@ export { BankMap } from './BankMap';
 export { Button } from './Button';
 export { Card } from './Card';
 export { CardList } from './CardList';
+export { CurrencyDropdown } from './CurrencyDropdown';
 export { ElasticSearch } from './ElasticSearch';
 export { Form } from './Form';
 export { Input } from './Input';

@@ -1,0 +1,45 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+$dropdown-width: 30%;
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-size: $c-font-size-2x-medium;
+  line-height: $c-line-height-3x-medium;
+  width: $dropdown-width;
+
+  &Header {
+    @include flex($justify-content: space-between, $align-items: center);
+    color: $primary-text-color;
+    padding: $c-spacing-medium;
+    cursor: pointer;
+
+    .dropdownIcon {
+      margin-left: $c-spacing-5x-large;
+      transition: transform 0.3s ease;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &Menu {
+    @include flex($direction: column, $justify-content: space-between);
+    width: $c-size-full;
+    height: auto;
+    max-height: $c-size-large;
+    position: absolute;
+    overflow-y: auto;
+    font-size: $c-font-size-small;
+    background: darken($bg-card-color, 10%);
+    color: $secondary-text-color;
+    border-radius: $c-radius-small;
+
+    div {
+      font-size: $c-font-size-3x-small;
+    }
+  }
+}

@@ -26,8 +26,9 @@ export const CurrencyConverter = () => {
     openModal();
   };
 
-  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) =>
+  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     handleToCurrencyChange(e.target.value as CurrenciesType);
+  };
 
   return (
     <>
