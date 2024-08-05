@@ -54,4 +54,4 @@ const ContactForm = ({ formObserver }: ContactFormProps) => {
   );
 };
 
-export const ContactFormWithObserver = withFormObserver(ContactForm);
+export const ContactFormWithObserver = withFormObserver({ WrappedComponent: ContactForm });
