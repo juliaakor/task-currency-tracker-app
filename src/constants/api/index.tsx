@@ -58,11 +58,16 @@ export interface CurrencyDetail {
   rate: number;
 }
 
+export interface CurrencyResponse {
+  code: string;
+  value: number;
+}
+
 export interface CurrencyResponseType {
   meta: {
     last_updated_at: string;
   };
-  data: Record<string, CurrencyDetail>;
+  data: Record<string, CurrencyResponse>;
 }
 
 export interface CurrencyRequestType {
