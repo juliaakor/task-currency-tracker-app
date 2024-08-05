@@ -10,6 +10,8 @@ $elastic-search-width: 30%;
 
   div {
     margin: 0;
+    height: auto;
+    max-height: $c-size-large;
 
     input {
       font-size: $c-font-size-x-small;
