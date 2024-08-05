@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 
-import { CardList, Input, Modal, Select, Status } from '@components/common';
+import { CardList, Input, Modal, Select } from '@components/common';
 import { PortalProvider } from '@components/utilities';
 import { CURRENCIES, CurrenciesType } from '@constants/api';
 import { useCurrencySelection, useModal } from '@hooks/index';
@@ -26,12 +26,12 @@ export const CurrencyConverter = () => {
     openModal();
   };
 
-  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) =>
+  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     handleToCurrencyChange(e.target.value as CurrenciesType);
+  };
 
   return (
     <>
-      <Status value="11:59pm" />
       <CardList heading="Quotes" elements={elements} onCardClick={onCardClick} />
       <PortalProvider>
         <Modal isOpen={isModalOpen} onClose={closeModal}>

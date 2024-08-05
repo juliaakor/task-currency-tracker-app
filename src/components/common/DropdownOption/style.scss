@@ -6,14 +6,20 @@
   padding: 0 $c-spacing-2x-medium;
   color: $secondary-text-color;
   border-radius: $c-radius-medium;
+  cursor: pointer;
 
   &:hover {
+    background: lighten($bg-card-color, 5%);
+  }
+
+  &[data-selected='true'] {
     background: lighten($bg-card-color, 5%);
   }
 }
 
 .dropdownIcon {
   width: $c-size-2x-small;
+  margin: 0 $c-spacing-small;
 }
 
 .dropdownLabel {
