@@ -4,6 +4,10 @@
 .contactForm {
   width: 50%;
   margin: $c-spacing-6x-medium auto;
+
+  @include breakpoint($point: 768) {
+    width: 75%;
+  }
 }
 
 .heading {

@@ -2,5 +2,9 @@
 @import '@styles/mixins.scss';
 
 .chartContainer {
-  height: 70vh;
+  height: $c-size-medium-viewpoint-height;
+
+  @include breakpoint($point: 1024) {
+    height: max-content;
+  }
 }

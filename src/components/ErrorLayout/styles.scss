@@ -3,7 +3,7 @@
 
 .container {
   @include flex($direction: column, $align-items: center, $justify-content: center);
-  height: 70vh;
+  height: $c-size-medium-viewpoint-height;
 }
 
 .title {

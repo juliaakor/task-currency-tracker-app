@@ -11,6 +11,10 @@
     list-style-type: none;
     @include flex($gap: $c-spacing-5x-large);
 
+    @include breakpoint($point: 425) {
+      gap: $c-spacing-medium;
+    }
+
     & a {
       @include link-hover;
     }

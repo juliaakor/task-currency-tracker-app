@@ -2,10 +2,12 @@
 @import '@styles/variables/index.scss';
 @import '@styles/mixins.scss';
 
+$map-container-height: 60vh;
+
 .mapContainer {
   position: relative;
   width: $c-size-full;
-  height: 60vh;
+  height: $map-container-height;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -49,5 +51,11 @@
     .modalBankInfo {
       font-size: $c-font-size-3x-small;
     }
+  }
+}
+
+@include breakpoint($point: 1024) {
+  .mapContainer {
+    width: 90%;
   }
 }

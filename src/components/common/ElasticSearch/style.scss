@@ -12,6 +12,7 @@ html[data-theme='light'] {
 }
 
 $elastic-search-width: 30%;
+$dropdown-container-height: 50vh;
 
 .elasticSearchContainer {
   width: $elastic-search-width;
@@ -44,10 +45,17 @@ $elastic-search-width: 30%;
   width: $elastic-search-width;
   z-index: 99;
   position: absolute;
-  height: 50vh;
+  height: $dropdown-container-height;
   overflow-y: scroll;
 }
 
 .dropdownContainer.show {
   display: block;
+}
+
+@include breakpoint($point: 768) {
+  .dropdownContainer,
+  .elasticSearchContainer {
+    width: 70%;
+  }
 }

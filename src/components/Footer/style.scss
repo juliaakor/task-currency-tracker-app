@@ -4,6 +4,18 @@
 .footer {
   @include flex($wrap: wrap, $justify-content: space-around, $gap: $c-spacing-4x-large);
   margin-top: $c-spacing-3x-large;
+
+  @include breakpoint($point: 768) {
+    $justify-content: center;
+
+    .companyInfo {
+      width: 70%;
+    }
+
+    .footerNav {
+      width: max-content;
+    }
+  }
 }
 
 .heading,
