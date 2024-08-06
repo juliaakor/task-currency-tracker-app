@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LogoIcon } from '@components/Icons';
+import { LogoIcon } from '@assets/index';
 
 import * as styles from './style.scss';
 

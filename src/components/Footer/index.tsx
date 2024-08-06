@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { LogoIcon } from '@components/Icons';
+import { LogoIcon } from '@assets/index';
 import { FOOTER_ROUTES } from '@constants/routes';
 
 import * as styles from './style.scss';

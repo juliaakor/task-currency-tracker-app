@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
+import { ArrowDownIcon } from '@assets/index';
 import { DropdownOption } from '@components/common/DropdownOption';
 import { CurrencyOption } from '@components/common/DropdownOption/types';
-import { ArrowDownIcon } from '@components/Icons';
 
 import * as styles from './styles.scss';
 import { CurrencyDropdownProps, CurrencyDropdownState } from './types';
