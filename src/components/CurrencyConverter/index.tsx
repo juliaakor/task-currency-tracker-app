@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 
 import { CardList, Input, Modal, Select } from '@components/common';
-import { PortalProvider } from '@components/utilities';
+import { ErrorBoundary, PortalProvider } from '@components/utilities';
 import { CURRENCIES, CurrenciesType } from '@constants/api';
 import { useCurrencySelection, useModal } from '@hooks/index';
 
@@ -32,7 +32,9 @@ export const CurrencyConverter = () => {
 
   return (
     <>
-      <CardList heading="Quotes" elements={elements} onCardClick={onCardClick} />
+      <ErrorBoundary>
+        <CardList heading="Quotes" elements={elements} onCardClick={onCardClick} />
+      </ErrorBoundary>
       <PortalProvider>
         <Modal isOpen={isModalOpen} onClose={closeModal}>
           <div className={styles.converter}>

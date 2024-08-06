@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Footer, Header, Navigation, Status } from '@components/index';
+import { ErrorBoundary } from '@components/utilities';
 
 import { router } from './router';
 
@@ -14,11 +15,13 @@ export const App = () => {
       <Navigation />
       <Header />
       <Status />
-      <Routes>
-        {router.map(({ Component, path }) => {
-          return <Route Component={Component} key={path} path={path} />;
-        })}
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          {router.map(({ Component, path }) => {
+            return <Route Component={Component} key={path} path={path} />;
+          })}
+        </Routes>
+      </ErrorBoundary>
       <Toaster />
       <Footer />
     </BrowserRouter>
