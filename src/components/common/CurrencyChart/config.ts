@@ -16,7 +16,7 @@ const chartColors = {
   strokeStyle: 'rgba(0, 0, 0, 1)',
 };
 
-export function chartData(chartItems: (number | [number, number] | null)[]): ChartData<'bar'> {
+export function chartData(chartItems: ChartItem[]): ChartData<'bar'> {
   return {
     datasets: [
       {

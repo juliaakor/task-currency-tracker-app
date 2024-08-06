@@ -2,61 +2,18 @@ import React from 'react';
 
 import { Form, Input, Modal } from '@components/common';
 import { PortalProvider, withFormObserver } from '@components/utilities';
-import { MessageStatus, ObserverUpdateFunctions } from '@components/utilities/FormObserver/types';
-import {
-  errorCurrencyFormSubmitToast,
-  inProgressCurrencyFormSubmitToast,
-  successCurrencyFormSubmitToast,
-} from '@lib/utils/toasts';
+import { MessageStatus } from '@components/utilities/FormObserver/types';
 
+import { CHART_CAPACITY, CURRENCY_FORM_INPUTS, CUSTOM_TOAST_FUNCTIONS, DEFAULT_CURRENCY_VALUES } from './constants';
 import * as styles from './styles.scss';
 import { CurrencyFormFields, CurrencyFormProps, CurrencyFormState } from './types';
-
-const defaultCurrencyValues = { closePrice: 0, date: new Date(), highPrice: 0, lowPrice: 0, openPrice: 0 };
-
-const customToastFunctions: ObserverUpdateFunctions = {
-  [MessageStatus.Error]: errorCurrencyFormSubmitToast,
-  [MessageStatus.Fail]: inProgressCurrencyFormSubmitToast,
-  [MessageStatus.Success]: successCurrencyFormSubmitToast,
-};
-
-const CurrencyFormInputs = [
-  {
-    label: 'Date',
-    name: 'date',
-    placeholder: 'Enter date',
-    type: 'date',
-  },
-  {
-    label: 'Open Price',
-    name: 'openPrice',
-    placeholder: 'Enter open price',
-  },
-  {
-    label: 'Close Price',
-    name: 'closePrice',
-    placeholder: 'Enter close price',
-  },
-  {
-    label: 'High Price',
-    name: 'highPrice',
-    placeholder: 'Enter high price',
-  },
-  {
-    label: 'Low Price',
-    name: 'lowPrice',
-    placeholder: 'Enter low price',
-  },
-];
-
-const CHART_CAPACITY = 30;
 
 class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyFormState> {
   constructor(props: CurrencyFormProps) {
     super(props);
     this.state = {
       isModalOpen: props.isOpen,
-      values: defaultCurrencyValues,
+      values: DEFAULT_CURRENCY_VALUES,
     };
   }
 
@@ -69,7 +26,7 @@ class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyF
   }
 
   handleResetFields = () => {
-    this.setState({ values: defaultCurrencyValues });
+    this.setState({ values: DEFAULT_CURRENCY_VALUES });
   };
 
   handleInputChange = (field: string) => (value: string) => {
@@ -127,7 +84,7 @@ class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyF
           <Form onSubmit={this.handleSubmit}>
             Current currency: ${currency}
             <div>
-              {CurrencyFormInputs.map((input) => (
+              {CURRENCY_FORM_INPUTS.map((input) => (
                 <Input
                   key={input.name}
                   defaultValue={
@@ -152,5 +109,5 @@ class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyF
 
 export const CurrencyForm = withFormObserver({
   WrappedComponent: CurrencyFormComponent,
-  observerUpdateFunctions: customToastFunctions,
+  observerUpdateFunctions: CUSTOM_TOAST_FUNCTIONS,
 });
