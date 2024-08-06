@@ -10,6 +10,6 @@
   font-size: $c-font-size-3x-medium;
   font-weight: $c-font-weight-thin;
   margin-bottom: $c-spacing-medium;
-  color: $primary-text-color;
+  color: var(--primary-text-color);
   text-align: center;
 }

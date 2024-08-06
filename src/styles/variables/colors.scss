@@ -1,22 +1,34 @@
 $bg-primary-color: rgba(3, 3, 4, 1);
+$bg-primary-color-light: rgb(229, 229, 233);
 $bg-card-color: rgba(32, 32, 37, 1);
+$bg-card-color-light: rgb(159, 159, 161);
 $bg-accent-color-highlight: rgba(255, 151, 29, 1);
-$bg-accent-color-success: rgba(22, 199, 130, 1);
+$bg-accent-color-success: rgb(15, 182, 118);
+$bg-accent-color-success-light: rgb(22, 156, 105);
 $bg-accent-color-error: rgba(234, 57, 67, 1);
+$bg-accent-color-error-light: rgb(167, 18, 25);
 
 $primary-text-color: rgba(255, 255, 255, 1);
+$primary-text-color-light: rgb(32, 31, 31);
 $secondary-text-color: rgba(217, 217, 217, 1);
+$secondary-text-color-light: rgb(43, 39, 39);
 $secondary-text-color-active: rgba(0, 0, 0, 1);
+$secondary-text-color-active-light: rgb(77, 64, 64);
 $label-text-color: rgba(167, 178, 195, 1);
+$label-text-color-light: rgb(51, 62, 80);
 $link-text-color: rgba(137, 137, 137, 1);
+$link-text-color-light: rgb(83, 83, 83);
 $disabled-text-color: rgba(158, 158, 158, 1);
+$disabled-text-color-light: rgba(158, 158, 158, 1);
 
 $border-color: rgba(71, 71, 71, 1);
+$border-color-light: rgb(138, 125, 125);
 $border-accent-color: rgba(96, 125, 148, 1);
 $border-accent-color-light: rgb(209, 220, 231);
 $border-accent-color-hover: rgb(85, 161, 228);
 
 $primary-button-color: rgb(113 113 113);
+$primary-button-color-light: rgb(197, 199, 216);
 
 $logo-gradient-start-rgb: rgba(0, 206, 44, 1);
 $logo-gradient-middle-rgb: rgba(174, 223, 35, 1);
@@ -25,3 +37,57 @@ $logo-gradient-end-rgb: rgba(163, 220, 0, 1);
 $header-primary-gradient-start-rgb: rgb(18, 18, 18);
 $header-primary-gradient-middle-rgb: rgba(36, 121, 64, 0.349);
 $header-primary-gradient-end-rgb: transparent;
+
+$header-primary-gradient-start-rgb-light: rgb(18, 18, 18);
+$header-primary-gradient-middle-rgb-light: rgba(36, 121, 64, 0.479);
+$header-primary-gradient-end-rgb-light: rgba(41, 66, 49, 0.63);
+
+html[data-theme='dark'] {
+  --bg-primary-color: #{$bg-primary-color};
+  --bg-card-color: #{$bg-card-color};
+  --bg-card-color-5: #{lighten($bg-card-color, 5%)};
+  --bg-card-color-10: #{lighten($bg-card-color, 10%)};
+  --bg-card-color-30: #{lighten($bg-card-color, 30%)};
+  --bg-accent-color-success: #{$bg-accent-color-success};
+  --bg-accent-color-error: #{$bg-accent-color-error};
+
+  --primary-text-color: #{$primary-text-color};
+  --secondary-text-color: #{$secondary-text-color};
+  --secondary-text-color-active: #{$secondary-text-color-active};
+  --label-text-color: #{$label-text-color};
+  --link-text-color: #{$link-text-color};
+  --disabled-text-color: #{$disabled-text-color};
+
+  --border-color: #{$border-color};
+
+  --primary-button-color: #{$primary-button-color};
+
+  --header-primary-gradient-start-rgb: #{$header-primary-gradient-start-rgb};
+  --header-primary-gradient-middle-rgb: #{$header-primary-gradient-middle-rgb};
+  --header-primary-gradient-end-rgb: #{$header-primary-gradient-end-rgb};
+}
+
+html[data-theme='light'] {
+  --bg-primary-color: #{$bg-primary-color-light};
+  --bg-card-color: #{$bg-card-color-light};
+  --bg-card-color-5: #{lighten($bg-card-color-light, 5%)};
+  --bg-card-color-10: #{lighten($bg-card-color-light, 10%)};
+  --bg-card-color-30: #{lighten($bg-card-color-light, 30%)};
+  --bg-accent-color-success: #{$bg-accent-color-success-light};
+  --bg-accent-color-error: #{$bg-accent-color-error-light};
+
+  --primary-text-color: #{$primary-text-color-light};
+  --secondary-text-color: #{$secondary-text-color-light};
+  --secondary-text-color-active: #{$secondary-text-color-active-light};
+  --label-text-color: #{$label-text-color-light};
+  --link-text-color: #{$link-text-color-light};
+  --disabled-text-color: #{$disabled-text-color-light};
+
+  --border-color: #{$border-color-light};
+
+  --primary-button-color: #{$primary-button-color-light};
+
+  --header-primary-gradient-start-rgb: #{$header-primary-gradient-start-rgb-light};
+  --header-primary-gradient-middle-rgb: #{$header-primary-gradient-middle-rgb-light};
+  --header-primary-gradient-end-rgb: #{$header-primary-gradient-end-rgb-light};
+}

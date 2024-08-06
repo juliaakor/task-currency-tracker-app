@@ -2,6 +2,7 @@
 @import '@styles/mixins.scss';
 
 $dropdown-width: 30%;
+$bg-card-color: var(--bg-card-color);
 
 .dropdown {
   position: relative;
@@ -12,7 +13,7 @@ $dropdown-width: 30%;
 
   &Header {
     @include flex($justify-content: space-between, $align-items: center);
-    color: $primary-text-color;
+    color: var(--primary-text-color);
     padding: $c-spacing-medium;
     cursor: pointer;
 
@@ -34,8 +35,8 @@ $dropdown-width: 30%;
     position: absolute;
     overflow-y: auto;
     font-size: $c-font-size-small;
-    background: darken($bg-card-color, 10%);
-    color: $secondary-text-color;
+    background: var(--bg-card-color-10);
+    color: var(--secondary-text-color);
     border-radius: $c-radius-small;
 
     div {

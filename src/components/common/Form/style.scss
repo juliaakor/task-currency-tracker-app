@@ -3,11 +3,11 @@
 
 .form {
   height: max-content;
-  background: $bg-card-color;
+  background: var(--bg-card-color);
   border-radius: $c-radius-medium;
   padding: $c-spacing-large $c-spacing-3x-medium;
   position: relative;
-  color: $primary-text-color;
+  color: var(--primary-text-color);
 }
 
 .buttonWrapper {

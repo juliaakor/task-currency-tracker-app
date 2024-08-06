@@ -4,6 +4,6 @@
   font-size: $c-font-size-small;
   font-weight: $c-font-weight-thin;
   line-height: $c-line-height-x-medium;
-  color: $primary-text-color;
+  color: var(--primary-text-color);
   text-decoration: none;
 }

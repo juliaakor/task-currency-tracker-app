@@ -26,7 +26,7 @@
 
 .infoParagraph {
   font-weight: $c-font-weight-thin;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
 }
 
 .companyInfo {
@@ -35,7 +35,7 @@
 
 .copyright {
   font-family: $c-font-family-secondary;
-  color: $link-text-color;
+  color: var(--link-text-color);
   width: $c-size-full;
   text-align: center;
 }
@@ -51,14 +51,14 @@
 }
 
 .linkSection {
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   font-size: $c-font-size-2x-medium;
   line-height: $c-line-height-2x-medium;
   margin-bottom: $c-spacing-5x-medium;
 }
 
 .link {
-  color: $link-text-color;
+  color: var(--link-text-color);
   margin-bottom: $c-spacing-3x-medium;
   width: min-content;
 

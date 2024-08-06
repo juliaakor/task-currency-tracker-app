@@ -25,14 +25,14 @@
 }
 
 .popup {
-  color: $secondary-text-color-active;
+  color: var(--secondary-text-color-active);
   background-color: transparent;
   width: $c-size-x-medium;
 
   .map-popup-content {
     padding: $c-spacing-medium;
     font-size: $c-font-size-2x-small;
-    color: $secondary-text-color-active;
+    color: var(--secondary-text-color-active);
 
     button {
       font-size: $c-font-size-2x-small;

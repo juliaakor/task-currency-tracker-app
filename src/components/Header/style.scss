@@ -4,9 +4,9 @@
 .header {
   background: linear-gradient(
     225deg,
-    $header-primary-gradient-start-rgb 0%,
-    $header-primary-gradient-middle-rgb 50%,
-    $header-primary-gradient-end-rgb 100%
+    var(--header-primary-gradient-start-rgb) 0%,
+    var(--header-primary-gradient-middle-rgb) 50%,
+    var(--header-primary-gradient-end-rgb) 100%
   );
   padding: $c-spacing-4x-medium 0 $c-spacing-large 0;
   max-height: $c-size-large;
@@ -51,6 +51,6 @@
   font-weight: $c-font-weight-thin;
   font-size: $c-font-size-medium;
   line-height: $c-line-height-large;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   letter-spacing: 1px;
 }

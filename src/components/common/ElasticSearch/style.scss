@@ -1,7 +1,16 @@
 @import '@styles/variables/index.scss';
 @import '@styles/mixins.scss';
 
-$bg-card-color: rgba(32, 32, 37, 1);
+html[data-theme='dark'] {
+  --bg-elastic-color: rgba(32, 32, 37, 1);
+  --bg-dropdown-container: rgb(63, 63, 70);
+}
+
+html[data-theme='light'] {
+  --bg-elastic-color: rgb(211, 211, 212);
+  --bg-dropdown-container: rgb(223, 223, 226);
+}
+
 $elastic-search-width: 30%;
 
 .elasticSearchContainer {
@@ -17,11 +26,11 @@ $elastic-search-width: 30%;
       font-size: $c-font-size-x-small;
       line-height: $c-line-height-x-small;
       padding: $c-spacing-x-medium;
-      background: $bg-card-color;
+      background: var(--bg-elastic-color);
       border-radius: $c-radius-medium;
 
       &::placeholder {
-        color: $disabled-text-color;
+        color: var(--disabled-text-color);
       }
     }
   }
@@ -30,7 +39,7 @@ $elastic-search-width: 30%;
 .dropdownContainer {
   margin: 0 auto;
   display: none;
-  background-color: lighten($bg-card-color, 2%);
+  background-color: var(--bg-dropdown-container);
   border-radius: $c-radius-medium;
   width: $elastic-search-width;
   z-index: 99;

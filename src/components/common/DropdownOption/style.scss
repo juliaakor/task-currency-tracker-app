@@ -4,16 +4,16 @@
 .dropdownItem {
   @include flex($justify-content: space-between, $align-items: center);
   padding: 0 $c-spacing-2x-medium;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   border-radius: $c-radius-medium;
   cursor: pointer;
 
   &:hover {
-    background: lighten($bg-card-color, 5%);
+    background: var(--bg-card-color-5);
   }
 
   &[data-selected='true'] {
-    background: lighten($bg-card-color, 5%);
+    background: var(--bg-card-color-5);
   }
 }
 
@@ -27,5 +27,5 @@
 }
 
 .dropdownLabelInfo {
-  color: $bg-accent-color-success;
+  color: var(--bg-accent-color-success);
 }

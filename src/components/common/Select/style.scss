@@ -11,6 +11,6 @@
 
 .select {
   font-size: $c-spacing-medium;
-  color: $secondary-text-color-active;
+  color: var(--secondary-text-color-active);
   @include input-basic;
 }

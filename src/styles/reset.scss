@@ -3,7 +3,7 @@
 html {
   height: $c-size-full;
   font-size: calc(8px + 0.39vw);
-  background: $bg-primary-color;
+  background: var(--bg-primary-color);
 }
 
 * {
