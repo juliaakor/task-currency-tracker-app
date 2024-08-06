@@ -3,7 +3,7 @@
 .errorBoundaryWrapper {
   margin: 10% auto;
   width: fit-content;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   font-size: $c-font-size-2x-small;
   font-weight: $c-font-weight-thin;
   padding: $c-spacing-x-small $c-spacing-3x-medium;

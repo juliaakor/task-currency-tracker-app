@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import * as styles from './style.scss';
 import { InputProps } from './types';
@@ -16,12 +16,19 @@ export const Input = ({
   ...props
 }: InputProps) => {
   const [value, setValue] = useState(defaultValue);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: inputValue } = e.target;
 
     setValue(inputValue);
-    onChange(value);
+    onChange(inputValue);
+  };
+
+  const handleFocus = () => {
+    if (type === 'date' && inputRef.current) inputRef.current.showPicker();
+
+    if (onFocus) onFocus();
   };
 
   return (
@@ -35,11 +42,12 @@ export const Input = ({
         <span />
       </span>
       <input
+        ref={inputRef}
         className={styles.input}
         id={label}
         name={name}
         onChange={onInputChange}
-        onFocus={onFocus}
+        onFocus={handleFocus}
         onBlur={onBlur}
         type={type}
         value={value}

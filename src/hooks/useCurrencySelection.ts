@@ -5,8 +5,10 @@ import { currencySelector } from '@store/currency';
 import { useAppSelector } from '@store/index';
 
 import { useFetchCurrencies } from './useFetchCurrencies';
+import { useUpdateStatus } from './useUpdateStatus';
 
 export const useCurrencySelection = () => {
+  const { updateStatus } = useUpdateStatus();
   const { initialCurrency } = useAppSelector(currencySelector);
   const [fromCurrency, setFromCurrency] = useState<CurrenciesType>(initialCurrency?.code || 'USD');
   const [toCurrency, setToCurrency] = useState<CurrenciesType>('EUR');
@@ -23,11 +25,14 @@ export const useCurrencySelection = () => {
 
   const handleAmountChange = (value: string) => {
     const numValue = parseFloat(value);
-    setAmount(numValue);
+    const validValue = !Number.isNaN(numValue) && numValue >= 0 ? numValue : 0;
+
+    setAmount(validValue);
   };
 
   const handleFromCurrencyChange = (currency: CurrenciesType) => {
     setFromCurrency(currency);
+    updateStatus();
   };
 
   const handleToCurrencyChange = (currency: CurrenciesType) => {

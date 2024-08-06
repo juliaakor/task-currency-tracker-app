@@ -2,7 +2,8 @@ import React from 'react';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { Footer, Header, Navigation } from '@components/index';
+import { Footer, Header, Navigation, Status } from '@components/index';
+import { ErrorBoundary } from '@components/utilities';
 
 import { router } from './router';
 
@@ -13,11 +14,14 @@ export const App = () => {
     <BrowserRouter>
       <Navigation />
       <Header />
-      <Routes>
-        {router.map(({ Component, path }) => {
-          return <Route Component={Component} key={path} path={path} />;
-        })}
-      </Routes>
+      <Status />
+      <ErrorBoundary>
+        <Routes>
+          {router.map(({ Component, path }) => {
+            return <Route Component={Component} key={path} path={path} />;
+          })}
+        </Routes>
+      </ErrorBoundary>
       <Toaster />
       <Footer />
     </BrowserRouter>

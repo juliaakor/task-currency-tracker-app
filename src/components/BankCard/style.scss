@@ -10,6 +10,6 @@
   font-weight: $c-font-weight-regular;
   line-height: $c-line-height-2x-large;
   margin: $c-spacing-5x-large 0 $c-spacing-2x-medium 0;
-  color: $primary-text-color;
+  color: var(--primary-text-color);
   text-align: center;
 }

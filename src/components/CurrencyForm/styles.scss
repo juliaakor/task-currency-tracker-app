@@ -1,0 +1,12 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.modal {
+  & > div > div {
+    background: transparent;
+
+    & > button {
+      display: none;
+    }
+  }
+}

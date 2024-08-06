@@ -1,0 +1,13 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.timelineContainer {
+  width: 75vw;
+  margin: $c-spacing-6x-large auto;
+}
+
+.buttonsContainer {
+  @include flex($direction: column, $gap: $c-spacing-small);
+  width: $c-size-small;
+  float: right;
+}

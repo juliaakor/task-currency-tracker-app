@@ -1,13 +1,15 @@
 import React, { useState, KeyboardEvent } from 'react';
 
 import * as styles from './style.scss';
+import { SwitchProps } from './types';
 
-export const Switch = () => {
+export const Switch = ({ onToggle }: SwitchProps) => {
   const [isOn, setIsOn] = useState(false);
   const switcherStatusStyle = isOn ? styles.on : styles.off;
 
   const toggleSwitch = () => {
     setIsOn((prevState) => !prevState);
+    onToggle();
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {

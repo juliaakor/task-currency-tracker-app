@@ -1999,6 +1999,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@kurkle/color@npm:^0.3.0":
+  version: 0.3.2
+  resolution: "@kurkle/color@npm:0.3.2"
+  checksum: 79e97b31f8f6efb28c69d373f94b0c7480226fe8ec95221f518ac998e156444a496727ce47de6d728eb5c3369288e794cba82cae34253deb0d472d3bfe080e49
+  languageName: node
+  linkType: hard
+
 "@leichtgewicht/ip-codec@npm:^2.0.1":
   version: 2.0.5
   resolution: "@leichtgewicht/ip-codec@npm:2.0.5"
@@ -3540,6 +3547,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chart.js@npm:^4.4.3":
+  version: 4.4.3
+  resolution: "chart.js@npm:4.4.3"
+  dependencies:
+    "@kurkle/color": ^0.3.0
+  checksum: 94c8d174b0d3414d50f145d4faa00bd12417bc48b18f96ac6c56f6225ec23cdc085038dddf45f77e472c5034d97e44cc23fbe35beb70d906addddd632a8c2ada
+  languageName: node
+  linkType: hard
+
+"chartjs-adapter-date-fns@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "chartjs-adapter-date-fns@npm:3.0.0"
+  peerDependencies:
+    chart.js: ">=2.8.0"
+    date-fns: ">=2.0.0"
+  checksum: c39bfdf490749faa589fba6e0dc0a2c5a467a5f06aaa52c5180e10fd9c83414807a064f6950538448bffee354c8064c0ce9d957bccbf2048e7ee2257aa95f138
+  languageName: node
+  linkType: hard
+
+"chartjs-plugin-zoom@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "chartjs-plugin-zoom@npm:2.0.1"
+  dependencies:
+    hammerjs: ^2.0.8
+  peerDependencies:
+    chart.js: ">=3.2.0"
+  checksum: c0ca5ae475bc3c7263e471258a7f16bd3d92c3642ded1395aeb841c9710d5af83e80410aa5e34869c4a1a5cc3899a166aec06a59bf9ecfda85f564618528b286
+  languageName: node
+  linkType: hard
+
 "cheap-ruler@npm:^4.0.0":
   version: 4.0.0
   resolution: "cheap-ruler@npm:4.0.0"
@@ -4021,6 +4058,13 @@ __metadata:
     es-errors: ^1.3.0
     is-data-view: ^1.0.1
   checksum: 7f0bf8720b7414ca719eedf1846aeec392f2054d7af707c5dc9a753cc77eb8625f067fa901e0b5127e831f9da9056138d894b9c2be79c27a21f6db5824f009c2
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:>=2.0.0":
+  version: 3.6.0
+  resolution: "date-fns@npm:3.6.0"
+  checksum: 0daa1e9a436cf99f9f2ae9232b55e11f3dd46132bee10987164f3eebd29f245b2e066d7d7db40782627411ecf18551d8f4c9fcdf2226e48bb66545407d448ab7
   languageName: node
   linkType: hard
 
@@ -5746,6 +5790,13 @@ __metadata:
   version: 1.1.0
   resolution: "grid-index@npm:1.1.0"
   checksum: 0e9d427b606ac644a723719116bb067639c01dccc881f161525e8eddb13b2de3b8a274641ef6d926d7629877ad8ed06b45290d52dd2d8af45532c50ccbbefe43
+  languageName: node
+  linkType: hard
+
+"hammerjs@npm:^2.0.8":
+  version: 2.0.8
+  resolution: "hammerjs@npm:2.0.8"
+  checksum: b092da7d1565a165d7edb53ef0ce212837a8b11f897aa3cf81a7818b66686b0ab3f4747fbce8fc8a41d1376594639ce3a054b0fd4889ca8b5b136a29ca500e27
   languageName: node
   linkType: hard
 
@@ -8120,6 +8171,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-chartjs-2@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "react-chartjs-2@npm:5.2.0"
+  peerDependencies:
+    chart.js: ^4.1.1
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: ace702185be1450e5888a8bcd8b5fc1995067e3b11d236764a67f5567a3d7c32ff16923b8d48d3d39bda6e45135da6c044c9b43fbe8e1978f95aca9d2c0ce348
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^18.3.1":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
@@ -9359,6 +9420,9 @@ __metadata:
     "@types/react-dom": ^18.3.0
     axios: ^1.7.2
     babel-loader: ^9.1.3
+    chart.js: ^4.4.3
+    chartjs-adapter-date-fns: ^3.0.0
+    chartjs-plugin-zoom: ^2.0.1
     compression-webpack-plugin: ^11.1.0
     copy-webpack-plugin: ^12.0.2
     css-loader: ^7.1.2
@@ -9381,6 +9445,7 @@ __metadata:
     mini-css-extract-plugin: ^2.9.0
     prettier: ^3.3.3
     react: ^18.3.1
+    react-chartjs-2: ^5.2.0
     react-dom: ^18.3.1
     react-hot-toast: ^2.4.1
     react-map-gl: ^7.1.7

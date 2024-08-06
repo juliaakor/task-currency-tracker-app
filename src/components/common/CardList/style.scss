@@ -17,10 +17,10 @@
   font-weight: $c-font-weight-thin;
   line-height: $c-line-height-x-medium;
   width: $c-size-3x-large;
-  color: $primary-text-color;
+  color: var(--primary-text-color);
   padding-bottom: $c-spacing-2x-medium;
   margin: $c-spacing-large 43% 0 0;
-  border-bottom: 2px solid $border-color;
+  border-bottom: 2px solid var(--border-color);
 }
 
 @include breakpoint($point: 768) {

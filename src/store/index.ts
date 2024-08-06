@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import { chartHistoryReducer } from '@store/chartHistory/chartHistorySlice';
 import { currencyReducer } from '@store/currency/currencySlice';
+import { statusReducer } from '@store/status/statusSlice';
 
 const persistConfig = {
   key: 'root',
@@ -11,6 +13,8 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, currencyReducer);
+const persistedChartHistoryReducer = persistReducer(persistConfig, chartHistoryReducer);
+const persistedstatusReducer = persistReducer(persistConfig, statusReducer);
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -28,7 +32,9 @@ export const store = configureStore({
       },
     }),
   reducer: {
+    chartHistory: persistedChartHistoryReducer,
     currencies: persistedReducer,
+    updateStatus: persistedstatusReducer,
   },
 });
 

@@ -25,7 +25,7 @@
   }
 
   .statusValue {
-    color: $secondary-text-color;
+    color: var(--secondary-text-color);
     font-size: $c-font-size-large;
     line-height: $c-line-height-x-medium;
     font-weight: $c-font-weight-thin;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { MessageStatus } from '@components/utilities/FormObserver/types';
 import { FormObserver } from '@lib/utils/observer';
 import { validateEmail, validateRequiredText } from '@lib/utils/validation';
 
@@ -90,10 +91,10 @@ export const useContactForm = (formObserver: FormObserver) => {
       try {
         setFormState((prev) => ({ ...prev, isSubmitted: true }));
 
-        formObserver.setIsUpdate(true, 'success');
+        formObserver.setIsUpdate(true, MessageStatus.Success);
         resetFields();
       } catch (error) {
-        formObserver.setIsUpdate(true, 'error');
+        formObserver.setIsUpdate(true, MessageStatus.Error);
       } finally {
         setFormState((prev) => ({ ...prev, isLoading: false }));
       }
@@ -101,7 +102,7 @@ export const useContactForm = (formObserver: FormObserver) => {
       return;
     }
 
-    formObserver.setIsUpdate(true, 'fail');
+    formObserver.setIsUpdate(true, MessageStatus.Fail);
   };
 
   return {

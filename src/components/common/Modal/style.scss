@@ -2,7 +2,14 @@
 @import '@styles/mixins.scss';
 
 $bg-modal-background: rgba(83, 83, 87, 0.637);
-$bg-modal-body: rgb(68 68 79);
+
+html[data-theme='dark'] {
+  --bg-modal-body: rgba(32, 32, 37, 1);
+}
+
+html[data-theme='light'] {
+  --bg-modal-body: rgb(217, 217, 231);
+}
 
 .modal {
   position: fixed;
@@ -20,11 +27,11 @@ $bg-modal-body: rgb(68 68 79);
 
 .modalBody {
   height: max-content;
-  background: $bg-modal-body;
+  background: var(--bg-modal-body);
   border-radius: $c-radius-medium;
   padding: $c-spacing-large $c-spacing-3x-medium;
   position: relative;
-  color: $primary-text-color;
+  color: var(--primary-text-color);
 }
 
 .button {
@@ -32,12 +39,13 @@ $bg-modal-body: rgb(68 68 79);
   right: $c-spacing-4x-medium;
   top: $c-spacing-x-medium;
   border: 0;
-  background: $primary-button-color;
+  background: var(--primary-button-color);
   @include flex($align-items: center, $gap: $c-spacing-x-small);
   padding: $c-spacing-3x-small $c-spacing-small;
   border-radius: $c-radius-small;
-  color: $secondary-text-color-active;
+  color: var(--secondary-text-color-active);
   font-weight: $c-font-weight-medium;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 5px 5px 5px -5px $border-accent-color-light;
