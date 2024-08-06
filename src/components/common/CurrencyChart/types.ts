@@ -1,6 +1,6 @@
 import { TimeUnit } from 'chart.js';
 
-import { CurrencyFormFields } from '@/components/CurrencyForm/types';
+import { CurrencyFormFields } from '@components/CurrencyForm/types';
 
 export interface ChartItemProps {
   optionsData: CurrencyFormFields[];

@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-underscore-dangle */
+
 import { Chart, ChartData, ChartOptions, TimeUnit } from 'chart.js';
 
 import { ChartItem } from './types';
@@ -16,7 +16,7 @@ const chartColors = {
   strokeStyle: 'rgba(0, 0, 0, 1)',
 };
 
-export function chartData(chartItems: ChartItem[]): ChartData<'bar'> {
+export function chartData(chartItems: (number | [number, number] | null)[]): ChartData<'bar'> {
   return {
     datasets: [
       {
@@ -130,15 +130,17 @@ export const plugins = [
       ctx.lineWidth = 2;
       ctx.strokeStyle = chartColors.strokeStyle;
       data.datasets[0].data.forEach((datapoint, index) => {
+        const datasetData = data?.datasets[0]?.data[index] as unknown as ChartItem;
+
         ctx.strokeStyle = chart.getDatasetMeta(0).data[index].options.backgroundColor;
         ctx.beginPath();
         ctx.moveTo(chart.getDatasetMeta(0).data[index].x, chart.getDatasetMeta(0).data[index].y);
-        ctx.lineTo(chart.getDatasetMeta(0).data[index].x, y.getPixelForValue(data.datasets[0].data[index].h as number));
+        ctx.lineTo(chart.getDatasetMeta(0).data[index].x, y.getPixelForValue(datasetData.h as number));
         ctx.stroke();
 
         ctx.beginPath();
         ctx.moveTo(chart.getDatasetMeta(0).data[index].x, chart.getDatasetMeta(0).data[index].y);
-        ctx.lineTo(chart.getDatasetMeta(0).data[index].x, y.getPixelForValue(data.datasets[0].data[index].l as number));
+        ctx.lineTo(chart.getDatasetMeta(0).data[index].x, y.getPixelForValue(datasetData.l as number));
         ctx.stroke();
       });
     },
@@ -163,7 +165,7 @@ export const plugins = [
 
       args.changed = true;
     },
-    beforeDatasetsDraw(chart) {
+    beforeDatasetsDraw(chart: Chart) {
       const {
         chartArea: { height, right, top },
         ctx,
@@ -171,8 +173,9 @@ export const plugins = [
         scales: { x, y },
       } = chart;
       const { hoverIndex, xHoverCoor, yHoverCoor } = this.temp;
+      if (xHoverCoor !== undefined && yHoverCoor !== undefined && hoverIndex !== undefined) {
+        const datasetData = data?.datasets[0]?.data[hoverIndex] as unknown as ChartItem;
 
-      if (xHoverCoor && yHoverCoor && hoverIndex) {
         const nearestX = x.getValueForPixel(xHoverCoor);
         ctx.save();
         ctx.beginPath();
@@ -183,15 +186,11 @@ export const plugins = [
         ctx.save();
         ctx.fillStyle = chartColors.crosshairLabel;
         ctx.beginPath();
-        ctx.fillRect(right, y.getPixelForValue(data.datasets[0].data[hoverIndex]!.c as number) - 12, right, 24);
+        ctx.fillRect(right, y.getPixelForValue(datasetData.c as number) - 12, right, 24);
         ctx.font = '400 12px Poppins';
         ctx.fillStyle = 'black';
         ctx.textBaseline = 'middle';
-        ctx.fillText(
-          `$${data.datasets[0].data[hoverIndex]!.c.toFixed(2)}`,
-          right + 10,
-          y.getPixelForValue(data.datasets[0].data[hoverIndex]!.c)
-        );
+        ctx.fillText(`$${datasetData.c.toFixed(2)}`, right + 10, y.getPixelForValue(datasetData.c));
         ctx.restore();
       }
     },
@@ -203,7 +202,7 @@ export const plugins = [
     },
   },
   {
-    afterDatasetsDraw(chart) {
+    afterDatasetsDraw(chart: Chart) {
       const {
         chartArea: { bottom, left, right, top },
         ctx,
@@ -211,10 +210,12 @@ export const plugins = [
         tooltip,
       } = chart;
 
-      if (tooltip && tooltip._active && tooltip._active.length) {
-        const activePoint = tooltip._active[0];
+      const activeElements = chart.getActiveElements();
+
+      if (tooltip && activeElements.length > 0) {
+        const activePoint = activeElements[0];
         const xValue = activePoint.element.x;
-        const yValue = y.getPixelForValue(tooltip.dataPoints[0].raw.c);
+        const yValue = y.getPixelForValue((tooltip.dataPoints[0].raw as ChartItem).c);
 
         ctx.save();
         ctx.setLineDash([]);
