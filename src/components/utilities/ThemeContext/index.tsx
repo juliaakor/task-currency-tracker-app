@@ -15,7 +15,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', darkTheme ? Theme.dark : Theme.light);
+    document.documentElement.setAttribute('data-theme', darkTheme ? Theme.Dark : Theme.Light);
   }, [darkTheme]);
 
   const value = useMemo(

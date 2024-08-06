@@ -148,19 +148,22 @@ export const plugins = [
   },
   {
     afterEvent(chart, args) {
-      if (args.inChartArea) {
-        const points = chart.getElementsAtEventForMode(args.event.native as Event, 'index', { intersect: false }, true);
-        this.temp.xHoverCoor = args.event.x;
-        this.temp.yHoverCoor = args.event.y;
-        if (points.length) {
-          this.temp.hoverIndex = points[0].index;
-          this.temp.xHoverCoor = points[0].element.x;
-          this.temp.yHoverCoor = points[0].element.y;
-        }
-      } else {
+      if (!args.inChartArea) {
         this.temp.xHoverCoor = undefined;
         this.temp.yHoverCoor = undefined;
         this.temp.hoverIndex = undefined;
+        args.changed = true;
+
+        return;
+      }
+      const points = chart.getElementsAtEventForMode(args.event.native as Event, 'index', { intersect: false }, true);
+      this.temp.xHoverCoor = args.event.x;
+      this.temp.yHoverCoor = args.event.y;
+
+      if (points.length > 0) {
+        this.temp.hoverIndex = points[0].index;
+        this.temp.xHoverCoor = points[0].element.x;
+        this.temp.yHoverCoor = points[0].element.y;
       }
 
       args.changed = true;
