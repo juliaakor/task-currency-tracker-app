@@ -1,0 +1,17 @@
+@import '@styles/variables/index.scss';
+@import '@styles/mixins.scss';
+
+.container {
+  @include flex($direction: column, $align-items: center, $justify-content: center);
+  height: 70vh;
+}
+
+.title {
+  font-size: $c-font-size-2x-large;
+  color: $label-text-color;
+}
+
+.message {
+  font-size: $c-font-size-medium;
+  color: $disabled-text-color;
+}

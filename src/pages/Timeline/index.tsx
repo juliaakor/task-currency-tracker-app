@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import { Button, CurrencyChart, CurrencyDropdown } from '@components/common';
-import { CurrencyForm } from '@components/CurrencyForm';
 import { CurrencyFormFields } from '@components/CurrencyForm/types';
+import { CurrencyForm } from '@components/index';
 import { useModal } from '@hooks/index';
 import { initSelectedOptionState } from '@lib/utils/api';
 import {
