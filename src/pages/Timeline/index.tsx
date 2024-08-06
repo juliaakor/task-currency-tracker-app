@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import { Button, CurrencyChart, CurrencyDropdown } from '@components/common';
-import { CurrencyForm } from '@components/CurrencyForm';
 import { CurrencyFormFields } from '@components/CurrencyForm/types';
+import { CurrencyForm } from '@components/index';
+import { ErrorBoundary } from '@components/utilities';
 import { useModal } from '@hooks/index';
 import { initSelectedOptionState } from '@lib/utils/api';
 import {
@@ -11,6 +12,7 @@ import {
   clearCurrencyHistory,
   updateCurrencyHistory,
 } from '@store/chartHistory';
+import { ClearCurrencyHistoryPayload } from '@store/chartHistory/chartHistorySlice';
 import { useAppDispatch, useAppSelector } from '@store/index';
 
 import * as styles from './styles.scss';
@@ -68,7 +70,7 @@ export const TimelinePage = () => {
     dispatch(
       clearCurrencyHistory({
         currency: selectedCurrency,
-      })
+      } as ClearCurrencyHistoryPayload)
     );
   };
 
@@ -84,7 +86,9 @@ export const TimelinePage = () => {
   return (
     <div className={styles.timelineContainer}>
       <CurrencyDropdown defaultOption={selectedCurrency} options={options} onCurrencySelect={handleCurrencySelect} />
-      <CurrencyChart optionsData={history} unit="day" />
+      <ErrorBoundary>
+        <CurrencyChart optionsData={history} unit="day" />
+      </ErrorBoundary>
       <CurrencyForm
         historyLength={history.length}
         currency={selectedCurrency}

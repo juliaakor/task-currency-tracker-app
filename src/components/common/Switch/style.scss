@@ -15,7 +15,7 @@ $transition-duration-n-timing: 0.3s ease;
 .switch {
   width: $c-size-full;
   height: $c-size-full;
-  border: $line-weight solid $primary-text-color;
+  border: $line-weight solid var(--primary-text-color);
   background: transparent;
   border-radius: 15px;
   position: relative;
@@ -25,7 +25,7 @@ $transition-duration-n-timing: 0.3s ease;
 .circle {
   width: $circle-size;
   height: $circle-size;
-  border: $line-weight solid $primary-text-color;
+  border: $line-weight solid var(--primary-text-color);
   background: transparent;
   border-radius: $c-radius-circle;
   position: absolute;
@@ -35,7 +35,7 @@ $transition-duration-n-timing: 0.3s ease;
 }
 
 .on .circle {
-  left: $circle-size - 0.075;
+  left: $circle-size - 0.175;
 }
 
 .off .circle {

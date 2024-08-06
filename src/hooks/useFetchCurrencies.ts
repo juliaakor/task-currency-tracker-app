@@ -10,7 +10,7 @@ export const useFetchCurrencies = (fromCurrency: CurrenciesType): CurrencyDetail
   const { elements, isCurrencyChanged, status } = useAppSelector(isCurrencyChangedSelector(fromCurrency));
 
   useEffect(() => {
-    if (status === CurrencyStateStatus.idle || isCurrencyChanged) {
+    if (status === CurrencyStateStatus.Idle || isCurrencyChanged) {
       dispatch(
         fetchCurrencies({
           currencies: Object.keys(CURRENCIES).join(','),

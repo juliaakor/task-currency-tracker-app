@@ -3,35 +3,34 @@ import React, { useEffect, useRef } from 'react';
 import { FormObserver } from '@lib/utils/observer';
 import { errorToast, failFormSubmitToast, successFormSubmitToast } from '@lib/utils/toasts';
 
-import { FormObserverProps, MessageStatus } from './types';
+import { FormObserverProps, MessageStatus, ObserverUpdateFunctions } from './types';
 
-export const withFormObserver = <P extends object>({ WrappedComponent, customObserver }: FormObserverProps<P>) => {
+const toastFunctions: ObserverUpdateFunctions = {
+  [MessageStatus.Error]: errorToast,
+  [MessageStatus.Fail]: failFormSubmitToast,
+  [MessageStatus.Success]: successFormSubmitToast,
+};
+
+export const withFormObserver = <P extends object>({
+  WrappedComponent,
+  observerUpdateFunctions,
+}: FormObserverProps<P>) => {
   const WithFormObserver = (props: Omit<P, 'formObserver'>) => {
     const formObserverRef = useRef(new FormObserver());
 
     useEffect(() => {
       const formObserver = formObserverRef.current;
 
-      const defaultObserver = (message: string) => {
-        if (message === MessageStatus.success) {
-          successFormSubmitToast();
-        }
-        if (message === MessageStatus.fail) {
-          failFormSubmitToast();
-        }
-        if (message === MessageStatus.error) {
-          errorToast();
-        }
+      const handleUpdate = (message: string) => {
+        const defaultFunction = toastFunctions[message];
+        const customFunction = observerUpdateFunctions?.[message];
+        const notifyFromObserver = customFunction || defaultFunction;
+
+        notifyFromObserver();
       };
 
       const observer = {
-        update: (message: string) => {
-          if (customObserver) {
-            customObserver.update(message);
-          } else {
-            defaultObserver(message);
-          }
-        },
+        update: handleUpdate,
       };
 
       formObserver.addObserver(observer);

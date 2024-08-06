@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PulsingCircleIcon } from '@components/Icons';
+import { PulsingCircleIcon } from '@assets/index';
 import { useAppSelector } from '@store/index';
 import { selectStatusLastUpdated } from '@store/status';
 

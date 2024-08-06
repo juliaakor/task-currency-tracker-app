@@ -1,7 +1,11 @@
 export enum MessageStatus {
-  success = 'success',
-  fail = 'fail',
-  error = 'error',
+  Success = 'success',
+  Fail = 'fail',
+  Error = 'error',
+}
+
+export interface ObserverUpdateFunctions {
+  [key: string]: () => void;
 }
 
 export interface Observer {
@@ -10,5 +14,5 @@ export interface Observer {
 
 export interface FormObserverProps<P> {
   WrappedComponent: React.ComponentType<P>;
-  customObserver?: Observer;
+  observerUpdateFunctions?: ObserverUpdateFunctions;
 }

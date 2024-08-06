@@ -1,7 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 
-import { CloseIcon } from '@components/Icons';
+import { CloseIcon } from '@assets/index';
 import { OutsideClickProvider, usePortal } from '@components/utilities';
 
 import * as styles from './style.scss';

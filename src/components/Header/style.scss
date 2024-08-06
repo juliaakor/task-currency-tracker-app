@@ -4,17 +4,69 @@
 .header {
   background: linear-gradient(
     225deg,
-    $header-primary-gradient-start-rgb 0%,
-    $header-primary-gradient-middle-rgb 50%,
-    $header-primary-gradient-end-rgb 100%
+    var(--header-primary-gradient-start-rgb) 0%,
+    var(--header-primary-gradient-middle-rgb) 50%,
+    var(--header-primary-gradient-end-rgb) 100%
   );
   padding: $c-spacing-4x-medium 0 $c-spacing-large 0;
-  max-height: $c-size-large;
-  @include flex($align-items: end);
+  min-height: $c-size-large;
+  @include flex($align-items: center);
 
   svg {
     min-width: 19rem;
     min-height: 19rem;
+  }
+
+  @include breakpoint($point: 1024) {
+    .heading {
+      padding-right: $c-spacing-large;
+      gap: $c-spacing-small;
+    }
+
+    .heading,
+    .headingHighlight {
+      font-size: $c-font-size-3x-large;
+      line-height: $c-line-height-2x-large;
+      @include flex($direction: column, $justify-content: center);
+    }
+
+    .infoContainer,
+    .infoParagraph {
+      width: 60%;
+    }
+  }
+
+  @include breakpoint($point: 768) {
+    svg {
+      display: none;
+    }
+
+    .infoContainer {
+      @include flex($direction: column, $justify-content: center, $align-items: center);
+      width: 100%;
+      float: none;
+
+      .heading {
+        text-align: center;
+        margin-bottom: $c-spacing-x-medium;
+        padding: 0;
+      }
+
+      .infoParagraph {
+        font-size: $c-font-size-3x-small;
+        line-height: $c-line-height-3x-small;
+        width: 50%;
+        float: none;
+      }
+    }
+  }
+
+  @include breakpoint($point: 425) {
+    .heading,
+    .headingHighlight {
+      font-size: $c-font-size-2x-large;
+      line-height: $c-line-height-x-large;
+    }
   }
 }
 
@@ -51,6 +103,6 @@
   font-weight: $c-font-weight-thin;
   font-size: $c-font-size-medium;
   line-height: $c-line-height-large;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   letter-spacing: 1px;
 }

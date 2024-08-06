@@ -1,6 +1,8 @@
 export { BankCard } from './BankCard';
 export { ContactFormWithObserver } from './ContactForm';
 export { CurrencyConverter } from './CurrencyConverter';
+export { CurrencyForm } from './CurrencyForm';
+export { ErrorLayout } from './ErrorLayout';
 export { Loader } from './Loader';
 export { Footer } from './Footer';
 export { Header } from './Header';

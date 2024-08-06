@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { BankMap, ElasticSearch } from '@components/common';
+import { ErrorBoundary } from '@components/utilities';
 
 import * as styles from './style.scss';
 import { BankCardState } from './types';
@@ -25,7 +26,9 @@ export class BankCard extends React.Component<Record<string, never>, BankCardSta
       <div className={styles.bankCardContainer}>
         <h3 className={styles.heading}>Search currency in the bank</h3>
         <ElasticSearch onCurrencySelect={this.handleCurrencySelect} />
-        <BankMap selectedCurrency={selectedCurrency} />
+        <ErrorBoundary>
+          <BankMap selectedCurrency={selectedCurrency} />
+        </ErrorBoundary>
       </div>
     );
   }

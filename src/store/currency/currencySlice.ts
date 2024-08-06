@@ -4,10 +4,10 @@ import { CurrencyDetail } from '@constants/api';
 import { fetchCurrencies } from '@store/currency/currencyThunk';
 
 export enum CurrencyStateStatus {
-  idle = 'idle',
-  loading = 'loading',
-  succeeded = 'succeeded',
-  failed = 'failed',
+  Idle = 'idle',
+  Loading = 'loading',
+  Succeeded = 'succeeded',
+  Failed = 'failed',
 }
 
 export interface CurrencyState {
@@ -21,7 +21,7 @@ const initialState: CurrencyState = {
   cache: {},
   elements: [],
   error: null,
-  status: CurrencyStateStatus.idle,
+  status: CurrencyStateStatus.Idle,
 };
 
 const currencySlice = createSlice({
@@ -30,21 +30,21 @@ const currencySlice = createSlice({
       .addCase(fetchCurrencies.pending, (state) => {
         return {
           ...state,
-          status: CurrencyStateStatus.loading,
+          status: CurrencyStateStatus.Loading,
         };
       })
       .addCase(fetchCurrencies.fulfilled, (state, action) => {
         return {
           ...state,
           elements: action.payload,
-          status: CurrencyStateStatus.succeeded,
+          status: CurrencyStateStatus.Succeeded,
         };
       })
       .addCase(fetchCurrencies.rejected, (state, action) => {
         return {
           ...state,
           error: action.error.message || 'Failed to fetch currencies',
-          status: CurrencyStateStatus.failed,
+          status: CurrencyStateStatus.Failed,
         };
       });
   },

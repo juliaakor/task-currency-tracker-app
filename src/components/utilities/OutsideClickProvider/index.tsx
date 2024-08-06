@@ -1,10 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-interface OutsideClickProviderProps {
-  onOutsideClick: () => void;
-  children: React.ReactNode;
-  className?: string;
-}
+import { OutsideClickProviderProps } from './types';
 
 export const OutsideClickProvider = ({ children, className, onOutsideClick }: OutsideClickProviderProps) => {
   const wrapperRef = useRef<HTMLDivElement | null>(null);

@@ -1,10 +1,13 @@
+@import 'https://api.tiles.mapbox.com/mapbox-gl-js/v3.5.2/mapbox-gl.css';
 @import '@styles/variables/index.scss';
 @import '@styles/mixins.scss';
+
+$map-container-height: 60vh;
 
 .mapContainer {
   position: relative;
   width: $c-size-full;
-  height: 60vh;
+  height: $map-container-height;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -25,14 +28,14 @@
 }
 
 .popup {
-  color: $secondary-text-color-active;
+  color: var(--secondary-text-color-active);
   background-color: transparent;
   width: $c-size-x-medium;
 
   .map-popup-content {
     padding: $c-spacing-medium;
     font-size: $c-font-size-2x-small;
-    color: $secondary-text-color-active;
+    color: var(--secondary-text-color-active);
 
     button {
       font-size: $c-font-size-2x-small;
@@ -48,5 +51,11 @@
     .modalBankInfo {
       font-size: $c-font-size-3x-small;
     }
+  }
+}
+
+@include breakpoint($point: 1024) {
+  .mapContainer {
+    width: 90%;
   }
 }

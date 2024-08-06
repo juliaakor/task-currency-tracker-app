@@ -91,10 +91,10 @@ export const useContactForm = (formObserver: FormObserver) => {
       try {
         setFormState((prev) => ({ ...prev, isSubmitted: true }));
 
-        formObserver.setIsUpdate(true, MessageStatus.success);
+        formObserver.setIsUpdate(true, MessageStatus.Success);
         resetFields();
       } catch (error) {
-        formObserver.setIsUpdate(true, MessageStatus.error);
+        formObserver.setIsUpdate(true, MessageStatus.Error);
       } finally {
         setFormState((prev) => ({ ...prev, isLoading: false }));
       }
@@ -102,7 +102,7 @@ export const useContactForm = (formObserver: FormObserver) => {
       return;
     }
 
-    formObserver.setIsUpdate(true, MessageStatus.fail);
+    formObserver.setIsUpdate(true, MessageStatus.Fail);
   };
 
   return {

@@ -9,7 +9,7 @@ import {
   PesoArgentinoIcon,
   YenIcon,
   YuanIcon,
-} from '@components/Icons';
+} from '@assets/index';
 
 export interface Currency {
   icon: ReactNode;

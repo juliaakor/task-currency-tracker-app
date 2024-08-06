@@ -3,35 +3,17 @@ import React from 'react';
 import { Form, Input, Modal } from '@components/common';
 import { PortalProvider, withFormObserver } from '@components/utilities';
 import { MessageStatus } from '@components/utilities/FormObserver/types';
-import {
-  errorCurrencyFormSubmitToast,
-  inProgressCurrencyFormSubmitToast,
-  successCurrencyFormSubmitToast,
-} from '@lib/utils/toasts';
 
+import { CHART_CAPACITY, CURRENCY_FORM_INPUTS, CUSTOM_TOAST_FUNCTIONS, DEFAULT_CURRENCY_VALUES } from './constants';
 import * as styles from './styles.scss';
-import { CurrencyFormProps, CurrencyFormState } from './types';
-
-const defaultCurrencyValues = { closePrice: 0, date: new Date(), highPrice: 0, lowPrice: 0, openPrice: 0 };
-
-const customObserver = {
-  update: (message: string) => {
-    if (message === MessageStatus.success) {
-      successCurrencyFormSubmitToast();
-    } else if (message === MessageStatus.fail) {
-      inProgressCurrencyFormSubmitToast();
-    } else if (message === MessageStatus.error) {
-      errorCurrencyFormSubmitToast();
-    }
-  },
-};
+import { CurrencyFormFields, CurrencyFormProps, CurrencyFormState } from './types';
 
 class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyFormState> {
   constructor(props: CurrencyFormProps) {
     super(props);
     this.state = {
       isModalOpen: props.isOpen,
-      values: defaultCurrencyValues,
+      values: DEFAULT_CURRENCY_VALUES,
     };
   }
 
@@ -44,7 +26,7 @@ class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyF
   }
 
   handleResetFields = () => {
-    this.setState({ values: defaultCurrencyValues });
+    this.setState({ values: DEFAULT_CURRENCY_VALUES });
   };
 
   handleInputChange = (field: string) => (value: string) => {
@@ -66,8 +48,8 @@ class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyF
 
     const { formObserver, historyLength, onSubmit } = this.props;
 
-    if (historyLength === 30) {
-      formObserver.setIsUpdate(true, MessageStatus.error);
+    if (historyLength === CHART_CAPACITY) {
+      formObserver.setIsUpdate(true, MessageStatus.Error);
 
       return;
     }
@@ -76,13 +58,13 @@ class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyF
     onSubmit({ ...values, date: new Date(values.date) });
     this.handleResetFields();
 
-    if (historyLength === 29) {
-      formObserver.setIsUpdate(true, MessageStatus.success);
+    if (historyLength === CHART_CAPACITY - 1) {
+      formObserver.setIsUpdate(true, MessageStatus.Success);
 
       return;
     }
 
-    formObserver.setIsUpdate(true, MessageStatus.fail);
+    formObserver.setIsUpdate(true, MessageStatus.Fail);
   };
 
   closeModal = () => {
@@ -102,46 +84,21 @@ class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyF
           <Form onSubmit={this.handleSubmit}>
             Current currency: ${currency}
             <div>
-              <Input
-                defaultValue={values.date.toString()}
-                type="date"
-                placeholder="Enter date"
-                label="Date"
-                name="date"
-                onChange={this.handleInputChange('date')}
-              />
-              <Input
-                defaultValue={values.openPrice.toLocaleString()}
-                type="number"
-                placeholder="Enter open price"
-                label="Open Price"
-                name="openPrice"
-                onChange={this.handleInputChange('openPrice')}
-              />
-              <Input
-                defaultValue={values.closePrice.toLocaleString()}
-                type="number"
-                placeholder="Enter close price"
-                label="Close Price"
-                name="closePrice"
-                onChange={this.handleInputChange('closePrice')}
-              />
-              <Input
-                defaultValue={values.highPrice.toLocaleString()}
-                type="number"
-                placeholder="Enter high price"
-                label="High Price"
-                name="highPrice"
-                onChange={this.handleInputChange('highPrice')}
-              />
-              <Input
-                defaultValue={values.lowPrice.toLocaleString()}
-                type="number"
-                placeholder="Enter low price"
-                label="Low Price"
-                name="lowPrice"
-                onChange={this.handleInputChange('lowPrice')}
-              />
+              {CURRENCY_FORM_INPUTS.map((input) => (
+                <Input
+                  key={input.name}
+                  defaultValue={
+                    input.type === 'date'
+                      ? values[input.name as keyof CurrencyFormFields].toString()
+                      : values[input.name as keyof CurrencyFormFields].toLocaleString()
+                  }
+                  type={input.type || 'number'}
+                  placeholder={input.placeholder}
+                  label={input.label}
+                  name={input.name}
+                  onChange={this.handleInputChange(input.name)}
+                />
+              ))}
             </div>
           </Form>
         </Modal>
@@ -150,4 +107,7 @@ class CurrencyFormComponent extends React.Component<CurrencyFormProps, CurrencyF
   }
 }
 
-export const CurrencyForm = withFormObserver({ WrappedComponent: CurrencyFormComponent, customObserver });
+export const CurrencyForm = withFormObserver({
+  WrappedComponent: CurrencyFormComponent,
+  observerUpdateFunctions: CUSTOM_TOAST_FUNCTIONS,
+});

@@ -3,32 +3,36 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CurrencyFormFields } from '@/components/CurrencyForm/types';
 import { CURRENCIES, CurrenciesType } from '@constants/api';
 
+export type ChartHistoryStateItemData = Omit<CurrencyFormFields, 'date'> & { date: string };
+
+export type ChartHistoryStateItem = Record<CurrenciesType, ChartHistoryStateItemData[]>;
+
 export interface ChartHistoryState {
-  data: Record<CurrenciesType, (Omit<CurrencyFormFields, 'date'> & { date: string })[]>;
+  data: ChartHistoryStateItem;
 }
 
-const initialState: ChartHistoryState = {
-  data: Object.keys(CURRENCIES).reduce(
-    (acc, key) => {
-      acc[key as CurrenciesType] = [];
+export interface ChartHistoryPayload<T> {
+  currency: CurrenciesType;
+  history: T;
+}
 
-      return acc;
-    },
-    {} as Record<CurrenciesType, (Omit<CurrencyFormFields, 'date'> & { date: string })[]>
-  ),
+export type AddCurrencyHistoryPayload = ChartHistoryPayload<ChartHistoryStateItemData>;
+export type ClearCurrencyHistoryPayload = ChartHistoryPayload<never>;
+export type UpdateCurrencyHistoryPayload = ChartHistoryPayload<ChartHistoryStateItemData[]>;
+
+const initialState: ChartHistoryState = {
+  data: Object.keys(CURRENCIES).reduce((acc, key) => {
+    acc[key as CurrenciesType] = [];
+
+    return acc;
+  }, {} as ChartHistoryStateItem),
 };
 
 const chartHistorySlice = createSlice({
   initialState,
   name: 'chartHistory',
   reducers: {
-    addCurrencyHistory: (
-      state,
-      action: PayloadAction<{
-        currency: CurrenciesType;
-        history: Omit<CurrencyFormFields, 'date'> & { date: string };
-      }>
-    ) => {
+    addCurrencyHistory: (state, action: PayloadAction<AddCurrencyHistoryPayload>) => {
       const { currency, history } = action.payload;
 
       return {
@@ -39,12 +43,7 @@ const chartHistorySlice = createSlice({
         },
       };
     },
-    clearCurrencyHistory: (
-      state,
-      action: PayloadAction<{
-        currency: CurrenciesType;
-      }>
-    ) => {
+    clearCurrencyHistory: (state, action: PayloadAction<ClearCurrencyHistoryPayload>) => {
       const { currency } = action.payload;
 
       return {
@@ -55,13 +54,7 @@ const chartHistorySlice = createSlice({
         },
       };
     },
-    updateCurrencyHistory: (
-      state,
-      action: PayloadAction<{
-        currency: CurrenciesType;
-        history: (Omit<CurrencyFormFields, 'date'> & { date: string })[];
-      }>
-    ) => {
+    updateCurrencyHistory: (state, action: PayloadAction<UpdateCurrencyHistoryPayload>) => {
       const { currency, history } = action.payload;
 
       return {
