@@ -1,4 +1,7 @@
-import React, { createContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useMemo } from 'react';
+
+import { useAppDispatch, useAppSelector } from '@store/index';
+import { selectIsThemeDark, setTheme } from '@store/theme';
 
 import { ContextProps, ThemeProviderProps, Theme } from './types';
 
@@ -8,22 +11,23 @@ export const ThemeContext = createContext<ContextProps>({
 });
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [darkTheme, setDarkTheme] = useState(true);
+  const isThemeDark = useAppSelector(selectIsThemeDark);
+  const dispatch = useAppDispatch();
 
-  const toggleThemeHandler = () => {
-    setDarkTheme((prevState) => !prevState);
-  };
+  const toggleThemeHandler = useCallback(() => {
+    dispatch(setTheme(!isThemeDark));
+  }, [dispatch, isThemeDark]);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', darkTheme ? Theme.Dark : Theme.Light);
-  }, [darkTheme]);
+    document.documentElement.setAttribute('data-theme', isThemeDark ? Theme.Dark : Theme.Light);
+  }, [isThemeDark]);
 
   const value = useMemo(
     () => ({
-      darkTheme,
+      darkTheme: isThemeDark,
       toggleTheme: toggleThemeHandler,
     }),
-    [darkTheme]
+    [isThemeDark, toggleThemeHandler]
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
