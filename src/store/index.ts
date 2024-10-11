@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage';
 import { chartHistoryReducer } from '@store/chartHistory/chartHistorySlice';
 import { currencyReducer } from '@store/currency/currencySlice';
 import { statusReducer } from '@store/status/statusSlice';
+import { themeReducer } from '@store/theme/themeSlice';
 
 const persistConfig = {
   key: 'root',
@@ -14,7 +15,8 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, currencyReducer);
 const persistedChartHistoryReducer = persistReducer(persistConfig, chartHistoryReducer);
-const persistedstatusReducer = persistReducer(persistConfig, statusReducer);
+const persistedStatusReducer = persistReducer(persistConfig, statusReducer);
+const persistedThemeReducer = persistReducer(persistConfig, themeReducer);
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -34,7 +36,8 @@ export const store = configureStore({
   reducer: {
     chartHistory: persistedChartHistoryReducer,
     currencies: persistedReducer,
-    updateStatus: persistedstatusReducer,
+    theme: persistedThemeReducer,
+    updateStatus: persistedStatusReducer,
   },
 });
 
