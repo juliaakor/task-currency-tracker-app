@@ -1,14 +1,17 @@
-import React, { useState, KeyboardEvent } from 'react';
+import React, { KeyboardEvent } from 'react';
+
+import { useAppSelector } from '@store/index';
+import { selectIsThemeDark } from '@store/theme';
 
 import * as styles from './style.scss';
 import { SwitchProps } from './types';
 
 export const Switch = ({ onToggle }: SwitchProps) => {
-  const [isOn, setIsOn] = useState(false);
-  const switcherStatusStyle = isOn ? styles.on : styles.off;
+  const isThemeDark = useAppSelector(selectIsThemeDark);
+
+  const switcherStatusStyle = isThemeDark ? styles.off : styles.on;
 
   const toggleSwitch = () => {
-    setIsOn((prevState) => !prevState);
     onToggle();
   };
 
@@ -25,7 +28,7 @@ export const Switch = ({ onToggle }: SwitchProps) => {
       onClick={toggleSwitch}
       onKeyDown={handleKeyDown}
       role="switch"
-      aria-checked={isOn}
+      aria-checked={isThemeDark}
       tabIndex={0}
       aria-label="Toggle theme switch"
     >
